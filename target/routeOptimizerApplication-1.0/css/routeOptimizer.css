@@ -1,0 +1,309 @@
+html,body {	
+	font-family: Helvetica, Georgia;
+	height: 96%;
+	margin: 0 auto;
+}
+a {
+	color: #295EBE;
+	cursor: pointer;
+	font-size: 12px;
+	outline: none;
+	text-decoration: none;	
+}
+.mainContainer {
+	height: auto !important;	
+	margin: 0 auto;		
+	min-height: 100%;	
+	width: 100%;
+}
+.dvHeader {
+	float: left;	
+	margin-bottom: 10px;
+	width: 100%;
+}
+.dvHeader h1 {	
+	height: 50px;
+	margin: 8px 0 0 20px;
+	width: 200px;
+}
+.dvHeader h1 a {	
+	height: 45px;
+	text-indent: -100000px;
+	width: 145px;
+}
+.irLogo {
+	margin-left: 10px;
+}
+.tapLogo {
+	float: left;
+    margin-top: 20px;   
+}
+.irlogoDiv {
+	float: left;
+    width: 45%;
+}
+.dvHeader h1 span {
+	color: #E09028;
+	display: inline-block;
+	float: none; 
+	font-size: 0.8em;
+	font-weight: normal;
+	padding: 36px 0 0 7px;
+	vertical-align: bottom;
+}
+.dvHeader .welcomeTxt {
+	float: right;
+}
+.mainnavContainer {	
+	float: left;
+	margin: 0 auto 10px;
+	padding: 0;
+	width: 100%;
+}
+.new_Width {
+	margin: 0 auto;
+}
+.contentContainer {
+	margin: 0 auto;
+	margin: 0;
+	padding: 10px 0 0;	
+}
+#footer_main {	
+	background: #FFF;
+	border-top: 1px solid #B2B2B2;
+	color: #333;
+	float: left;
+	font-size: 11px;	
+	height: 20px;
+	text-align: right;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	width: 100%;	
+}
+.footerContainer {
+	margin: 0 2%;
+}
+.footerlink {
+	color: #295EBF;
+	font-family: Helvetica, Georgia;
+	font-size: 11px;	
+	margin-right: 10px;
+	text-decoration: none;
+}
+.footerlink a {
+	color: #295EBF;
+}
+.footerlink img {
+	border: none;
+}
+#locTagDiv {	
+    float: left;
+    width: 100%;
+}
+table.display {
+    margin: 0 auto;
+    clear: both;
+    border-collapse: collapse;
+}
+table.display thead th {	
+   background-attachment: scroll, scroll;
+    background-clip: border-box, border-box;
+    background-color: #FCF5C9;
+    background-origin: padding-box, padding-box;
+    background-position: 95% 50%;
+    background-repeat: no-repeat, repeat;
+    background-size: auto auto, auto auto;
+    border: 1px solid #EED8BE;
+    border-radius: 2px 0 0 0;
+    box-shadow: 0 0 3px #EBEBEB;
+    color: #515151;
+    font-size: 12px;
+    font-weight: normal;
+    height: auto;
+    height: 30px;
+    cursor: default;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+tbody {
+    color: #515151;
+    font-size: 12px;
+}
+tr.odd {
+    background-color: #FFF;
+}
+tr.even {
+    background-color: #F5F5F5;
+}
+table tr.odd td {
+    background-color: #FFF;
+}
+table tr.even td {
+    background-color: #F5F5F5;
+}
+.display tbody tr td {
+    font-size: 12px;
+}
+table.display td {
+    padding: 8px 6px;
+    border: 1px solid #EED8BE;
+}
+.tabletr {
+    height: 31px;
+}
+.tabletr td {
+    background: #FFF;
+    border-right: 1px #DEC4A5 solid;
+    border-bottom: 1px #DEC4A5 solid;  
+    padding: 3px;
+}
+.frmTwoCol {
+	border: 1px solid #DDD;
+	border-radius: 3px;
+	float: left;
+	margin: 0 0 10px;
+	padding: 10px 0;
+	width: 99.6%;
+}
+.frmTwoCol legend {
+	background: url("../images/icon_collapse.png") no-repeat scroll	5px 5px transparent;	
+	cursor: pointer;
+	display: block;
+	font-family: "Georgia";
+	font-size: 18px;
+	font-weight: normal;
+	margin: 0 0 0 19px;
+	padding: 0 22px 0 24px;
+}
+.frmTwoCol .dvRow {
+	float: left;
+	margin: 10px 0 0 0;
+	width: 100%;	
+}
+.frmTwoCol .dvRow .Col {
+	float: left;
+	margin-left: 22px;	
+	width: 43%;
+}
+.frmTwoCol .dvRow .Col label {
+	color: #666;
+	float: left;
+	font-size: 12px;
+	margin: 0 0 5px 0;	
+	min-height: 13px;
+	width: 98%;
+}
+.frmTwoCol .dvRow .Col input {
+	border: 1px solid #CDCDCD;
+	color: #000;
+	float: left;
+	font-size: 12px;
+	margin: 0 5px 5px 0;
+	width: 80%;	
+}
+.frmTwoCol .dvRow .Col select {
+	border: 1px solid #CDCDCD;
+	color: #000;
+	float: left;
+	font-size: 12px;
+	margin: 0 5px 5px 0;
+	width: 84.5%;	
+}
+.frmTwoCol .dvRow .Col img {
+	float: left;
+	margin-top: 3px;	
+}
+#btnNoOfLoc {
+	border: 0 none;	
+    margin-left: 10px;
+    margin-top: -7px;
+    width: 10%;
+}
+.routeOptBtns {
+    background: none repeat scroll 0 0 #FDB048;
+    border: 0 none;
+    border-radius: 2px;
+    color: #000;
+    cursor: pointer;
+    font-size: 13px !important;
+    padding: 6px 10px;
+}
+.routeOptButtonBar {
+    float: left;    
+    margin-top: 20px;
+    width: 98%;	
+}
+.routeOptBtnLeftSide {
+	 float: left; 
+	 width: 90%;  
+}
+.routeOptBtnRightSide {
+	float: right;
+    width: 10%;
+}
+.routeFieldWithError {
+	border: 1px solid #FF0000 !important;
+}
+.routeFieldWithNoError {
+	border: 1px solid #CDCDCD !important;
+}
+#routeOptErrContainer, #routeOptSucContainer {
+	float: left;
+	width: 100%;
+}
+.divError {		
+    background-color: #F2DEDE;
+	border : 1px solid #EED3D7;
+	border-radius: 3px;
+    float: left;    
+    height: auto;
+    margin: 10px 0;  	
+	min-height: 36px;	
+	padding-right: 5px;
+	padding-bottom: 0; 
+	width: 99%;
+}
+.divSuccess {
+	background-color: #DFF0D8;
+	border : 1px solid #D6E9C6;
+	border-radius: 3px;
+    float: left;
+    height: auto;
+    margin: 10px 0;   	
+	min-height: 36px;
+	padding-bottom: 0;  
+	padding-right: 5px;	
+	width: 99%;
+}
+.icon_alert {
+    float: left;        
+    margin: 10px 5px 0 10px;
+}
+.errormsgItems {
+	clear: both;
+	color: #CC5250;
+	float: left;
+	margin-bottom: 5px;
+	margin-left: 5px;
+	margin-top: 12px;
+	width: 98%;
+}
+.error_msg_long {
+	color: #FF0000;
+	float: left;
+	font-size: 13px;	
+	width: 80%;
+}
+.success_msg {
+	font-size: 13px;
+	color: #006600;
+	float: left;
+	width: 80%;
+	margin-top: 8px;
+    margin-left: 5px;
+}
+#routeOptimizerTblBody input[type="text"] {	
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 96%;
+}
