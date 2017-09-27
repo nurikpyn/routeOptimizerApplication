@@ -1,4 +1,4 @@
-package com.qut.routeOptimizerApplication;
+package com.qut.routeOptimizerApplication.properties;
 
 public final class RouteOptimzerProperties {
 	public  final String osmFilePath = "C:\\Users\\pretty\\Desktop\\routeOptimizerApplication\\src\\main\\resources\\osmMap\\australia.pbf";

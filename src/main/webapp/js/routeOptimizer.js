@@ -86,10 +86,10 @@ function addLocation(){
 			'Location - '+(i+1)+
 			'</td>'+
 			'<td>'+
-			'<input type="text" name="locationList['+i+'].longitude" id="longitude_'+i+'" value="" onkeypress="validateInteger(event)"/>'+
+			'<input type="text" name="locationList['+i+'].latitude" id="latitude_'+i+'" value="" onkeypress="validateInteger(event)"/>'+
 			'</td>'+
 			'<td>'+
-			'<input type="text" name="locationList['+i+'].latitude" id="latitude_'+i+'" value="" onkeypress="validateInteger(event)"/>'+
+			'<input type="text" name="locationList['+i+'].longitude" id="longitude_'+i+'" value="" onkeypress="validateInteger(event)"/>'+
 			'</td>'+
 			'</tr>';
 			//alert(html);
