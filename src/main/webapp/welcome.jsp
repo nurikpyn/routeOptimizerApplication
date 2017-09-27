@@ -63,7 +63,7 @@
 </div>
 </fieldset>
 </div>
-	<form id="routeOptimizerForm" action="save" name="routeOptimizerForm" method="POST" >
+	<form id="routeOptimizerForm" action="save" name="routeOptimizerForm" method="GET" >
 	<table id="routeOptimizerTbl" style="display:none;" class="display" width="100%">
 	<thead>
 	<tr>

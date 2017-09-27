@@ -19,11 +19,12 @@ public class DistanceController {
 		System.out.println("inside welcomr");
 		return "welcome";
 	}
-	@RequestMapping(value = "/save",method = RequestMethod.POST)
-	public ModelAndView getDistanceMatrix(@ModelAttribute("locations") UploadInvoiceBean uploadInvoiceBean) {
+	@RequestMapping(value = "/save",method = RequestMethod.GET)
+	public String getDistanceMatrix(@ModelAttribute("locations") UploadInvoiceBean uploadInvoiceBean) {
 		ModelAndView model=new ModelAndView();
 		DistanceService locationServiceObject=new DistanceService();
-		model=locationServiceObject.calculateDistanceMatrix(uploadInvoiceBean);
-		return model;
+		double[][] distanceList=locationServiceObject.calculateDistanceMatrix(uploadInvoiceBean);
+		model.addObject("distanceArray", distanceList);
+		return "distanceMatrix";
 	}
 }
