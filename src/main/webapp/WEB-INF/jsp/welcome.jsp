@@ -4,11 +4,15 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/reset.css" />
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/routeOptimizer.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.form.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/routeOptimizer.js"></script>
+<c:url value="/css/reset.css" var="reset" />
+<link href="${reset}" rel="stylesheet" />
+<c:url value="/css/routeOptimizer.css" var="routeOptimizer" />
+<link href="${routeOptimizer}" rel="stylesheet" />
+<c:url value="/js/jquery.form.js" var="jquery" />
+<script type="text/javascript" src="${jquery}"></script>
+<c:url value="/js/routeOptimizer.js" var="routeOptimizerjs" />
+<script type="text/javascript" src="${routeOptimizerjs}" ></script>
 </head>
 <body>
 <div id="loading" style="display:none;">

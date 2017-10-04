@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Implementation-Title: Spring Boot Web JSP Example
+Implementation-Title: RouteOptimizerApplication
 Implementation-Version: 1.0
 Built-By: pretty
 Implementation-Vendor-Id: org.springframework.boot
