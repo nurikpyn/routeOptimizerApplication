@@ -1,9 +1,9 @@
 package com.qut.routeOptimizerApplication.Bean;
 
 public class ResultsBean {
-	Location source;
+	Address source;
 	String sourceName;
-	Location destination;
+	Address destination;
 	String destinationName;
 	double distance;
 	double time;
@@ -20,16 +20,16 @@ public class ResultsBean {
 	public void setDestinationName(String destinationName) {
 		this.destinationName = destinationName;
 	}
-	public Location getSource() {
+	public Address getSource() {
 		return source;
 	}
-	public void setSource(Location source) {
+	public void setSource(Address source) {
 		this.source = source;
 	}
-	public Location getDestination() {
+	public Address getDestination() {
 		return destination;
 	}
-	public void setDestination(Location destination) {
+	public void setDestination(Address destination) {
 		this.destination = destination;
 	}
 	public double getDistance() {

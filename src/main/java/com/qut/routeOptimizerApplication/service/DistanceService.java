@@ -5,12 +5,12 @@ import com.graphhopper.GHResponse;
 import com.graphhopper.GraphHopper;
 import com.graphhopper.routing.util.EncodingManager;
 import com.graphhopper.util.shapes.GHPoint;
-import com.qut.routeOptimizerApplication.Bean.Location;
-import com.qut.routeOptimizerApplication.Bean.UploadInvoiceBean;
+import com.qut.routeOptimizerApplication.Bean.Address;
+import com.qut.routeOptimizerApplication.Bean.AddressListBean;
 import com.qut.routeOptimizerApplication.properties.RouteOptimzerProperties;
 
 public class DistanceService {
-public double getDistance(Location source,Location destination) {
+public double getDistance(Address source,Address destination) {
 	GHPoint ghPointSource,ghPointDestination;
 	GHResponse ghResponse=new GHResponse();
 	
@@ -32,11 +32,11 @@ public double getDistance(Location source,Location destination) {
 	ghResponse = graphHopper.route(request);
 	return ghResponse.getDistance();
 }
-public double[][] calculateDistanceMatrix(UploadInvoiceBean uploadInvoiceBean) {
+public double[][] calculateDistanceMatrix(AddressListBean uploadInvoiceBean) {
 	int locationLength=uploadInvoiceBean.getLocationList().size();
 	double[][] distanceArray = new double[locationLength][locationLength];
-	Location source;
-	Location destination;
+	Address source;
+	Address destination;
 	 for(int i=0;i<locationLength;i++) {
 		 source=uploadInvoiceBean.getLocationList().get(i);
 		 for(int j=0;j<locationLength;j++) {
