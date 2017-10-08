@@ -1,6 +1,7 @@
 
 package com.qut.routeOptimizerApplication.Controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.qut.routeOptimizerApplication.Bean.AddressListBean;
+import com.qut.routeOptimizerApplication.Bean.ResultsBean;
 import com.qut.routeOptimizerApplication.service.DistanceService;
 
 @Controller
@@ -23,7 +25,7 @@ public class DistanceController {
 		System.out.println("inside getDistanceMatrix");
 		ModelAndView model=new ModelAndView();
 		DistanceService locationServiceObject=new DistanceService();
-		double[][] distanceList=locationServiceObject.calculateDistanceMatrix(addressListBean);
+		List<ResultsBean>distanceList=locationServiceObject.calculateDistanceMatrix(addressListBean);
 		model.addObject("distanceArray", distanceList);
 		return "distanceMatrix";
 	}
