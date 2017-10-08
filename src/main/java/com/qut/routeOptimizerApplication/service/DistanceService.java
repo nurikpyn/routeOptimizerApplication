@@ -20,12 +20,12 @@ public class DistanceService {
 		ResultsBean resultbean = new ResultsBean();
 		RouteOptimzerProperties routeOptimzerProperties = new RouteOptimzerProperties();
 		ghPointSource = new GHPoint();
-		ghPointSource.lat = Double.parseDouble(source.getLatitude());
-		ghPointSource.lon = Double.parseDouble(source.getLongitude());
+		ghPointSource.lat = source.getLatitude();
+		ghPointSource.lon = source.getLongitude();
 		resultbean.setSource(ghPointSource);
 		ghPointDestination = new GHPoint();
-		ghPointDestination.lat = Double.parseDouble(destination.getLatitude());
-		ghPointDestination.lon = Double.parseDouble(destination.getLongitude());
+		ghPointDestination.lat =destination.getLatitude();
+		ghPointDestination.lon = destination.getLongitude();
 		resultbean.setDestination(ghPointDestination);
 		if (source == destination) {
 			resultbean.setDistance(0);
@@ -59,5 +59,8 @@ public class DistanceService {
 		}
 		
 		return resultsBeanList;
+	}
+	public void createVrp(List<ResultsBean> resultBeanList) {
+		
 	}
 }
