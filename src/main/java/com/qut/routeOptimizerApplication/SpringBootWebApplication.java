@@ -22,7 +22,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 @SpringBootApplication
 public class SpringBootWebApplication extends SpringBootServletInitializer {
-
+	// private final Logger logger = LoggerFactory.getLogger(getClass());
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(SpringBootWebApplication.class);

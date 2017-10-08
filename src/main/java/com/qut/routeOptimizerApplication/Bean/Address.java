@@ -1,18 +1,30 @@
 package com.qut.routeOptimizerApplication.Bean;
 
-public class Location {
-
+public class Address {
+	// private final Logger logger = LoggerFactory.getLogger(getClass());
+	private int id;
 	private String latitude;
 	private String longitude;
 
-	public Location(String latitude, String longitude) {
+	public Address() {
+
+	}
+
+	public Address(int id, String latitude, String longitude) {
 		super();
+		this.id = id;
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
-public Location() {
-	
-}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getLatitude() {
 		return latitude;
 	}
@@ -27,6 +39,11 @@ public Location() {
 
 	public void setLongitude(String longitude) {
 		this.longitude = longitude;
+	}
+
+	@Override
+	public String toString() {
+		return "latitude=" + latitude + " longitude=" + longitude;
 	}
 
 }
