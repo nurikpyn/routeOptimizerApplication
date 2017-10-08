@@ -3,22 +3,22 @@ package com.qut.routeOptimizerApplication.Bean;
 import java.util.List;
 
 public class UploadInvoiceBean {
-	// private final Logger logger = LoggerFactory.getLogger(getClass());
-	private List<Address> locationList;
+
+	private List<Location> locationList;
 	
-	public List<Address> getLocationList() {
+	public List<Location> getLocationList() {
 		return locationList;
 	}
 	public UploadInvoiceBean() {
 		
 	}
-	public UploadInvoiceBean(List<Address> locationList, String status) {
+	public UploadInvoiceBean(List<Location> locationList, String status) {
 		super();
 		this.locationList = locationList;
 		this.status = status;
 	}
 
-	public void setLocationList(List<Address> locationList) {
+	public void setLocationList(List<Location> locationList) {
 		this.locationList = locationList;
 	}
 
