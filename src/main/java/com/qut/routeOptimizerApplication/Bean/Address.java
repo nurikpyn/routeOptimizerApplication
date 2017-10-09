@@ -4,6 +4,7 @@ public class Address {
 	private int id;
 	private Double latitude;
 	private Double longitude;
+	private String name;
 
 	public Address(int id,Double latitude, Double longitude) {
 		super();
@@ -14,6 +15,14 @@ public class Address {
 
 	public Address() {
 
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public int getId() {

@@ -4,10 +4,10 @@ import java.util.List;
 
 public class VRPSolution {
 	 protected String name;
-	    protected String distanceType="ROAD_DISTANCE";
+	   
 	    protected String distanceUnitOfMeasurement;
 	    protected List<Address> locationList;
-	    protected List<Depot> depotList;
+	    protected Depot depot;
 	    public String getName() {
 			return name;
 		}
@@ -26,11 +26,11 @@ public class VRPSolution {
 		public void setLocationList(List<Address> locationList) {
 			this.locationList = locationList;
 		}
-		public List<Depot> getDepotList() {
-			return depotList;
+		public Depot getDepot() {
+			return depot;
 		}
-		public void setDepotList(List<Depot> depotList) {
-			this.depotList = depotList;
+		public void setDepot(Depot depot) {
+			this.depot = depot;
 		}
 		public List<Vehicle> getVehicleList() {
 			return vehicleList;

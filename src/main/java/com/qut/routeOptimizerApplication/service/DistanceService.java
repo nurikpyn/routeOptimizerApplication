@@ -9,7 +9,6 @@ import com.graphhopper.GraphHopper;
 import com.graphhopper.routing.util.EncodingManager;
 import com.graphhopper.util.shapes.GHPoint;
 import com.qut.routeOptimizerApplication.Bean.Address;
-import com.qut.routeOptimizerApplication.Bean.AddressListBean;
 import com.qut.routeOptimizerApplication.Bean.ResultsBean;
 import com.qut.routeOptimizerApplication.properties.RouteOptimzerProperties;
 
@@ -46,21 +45,21 @@ public class DistanceService {
 		return resultbean;
 	}
 
-	public List<ResultsBean> calculateDistanceMatrix(AddressListBean uploadInvoiceBean) {
-		int locationLength = uploadInvoiceBean.getLocationList().size();
+	public double[][] calculateEdgeMatrix(List<Address> uploadInvoiceBean) {
+		int locationLength = uploadInvoiceBean.size();
 		List<ResultsBean> resultsBeanList=new ArrayList<ResultsBean>();
+		double[][] edgeMatrix=new double[locationLength][locationLength];
 		ResultsBean resultBean;
 		for (int i = 0; i < locationLength; i++) {
 			for (int j = 0; j < locationLength; j++) {
 				resultBean =new ResultsBean();
-				resultBean=getDistance( uploadInvoiceBean.getLocationList().get(i), uploadInvoiceBean.getLocationList().get(j));
+				resultBean=getDistance( uploadInvoiceBean.get(i), uploadInvoiceBean.get(j));
+				edgeMatrix[i][j]=resultBean.getDistance();
 				resultsBeanList.add(resultBean);
 			}
 		}
 		
-		return resultsBeanList;
+		return edgeMatrix;
 	}
-	public void createVrp(List<ResultsBean> resultBeanList) {
-		
-	}
+	
 }
