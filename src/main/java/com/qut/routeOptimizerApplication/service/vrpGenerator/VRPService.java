@@ -13,7 +13,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 
@@ -23,14 +22,14 @@ import com.qut.routeOptimizerApplication.Bean.Address;
  * This is very quick and VERY DIRTY code.
  */
 public class VRPService {
-	private static final char DEFAULT_SEPARATOR = ',';
-    private static final char DEFAULT_QUOTE = '"';
 
-    public void generateVrp(File locationFile, File hubFile, int locationListSize, double[][] distanceList,int depotListSize, int vehicleListSize, int capacity,
+    @SuppressWarnings("resource")
+	public void generateVrp(File locationFile, File hubFile, int locationListSize, double[][] distanceList,int depotListSize, int vehicleListSize, int capacity,
             GenerationDistanceType distanceType, VrpType vrpType) throws FileNotFoundException {
         String name = "input";
         File vrpOutputFile = createVrpOutputFile(name, distanceType, vrpType, depotListSize != 1);
         List<Address> locationList = readLocationFile(locationFile);
+        
         BufferedWriter vrpWriter = null;
         
         try {
@@ -38,8 +37,8 @@ public class VRPService {
             vrpWriter = writeHeaders(vrpWriter, locationListSize, capacity, distanceType, vrpType, name);
             writeNodeCoordSection(vrpWriter, locationList);
             writeEdgeWeightSection(vrpWriter, distanceType,distanceList, locationList.size());
-           // writeDemandSection(vrpWriter, locationListSize, depotListSize, vehicleListSize, capacity, locationList, vrpType);
-           // writeDepotSection(vrpWriter, locationList, depotListSize);
+            writeDemandSection(vrpWriter, locationListSize, depotListSize, vehicleListSize, capacity, locationList, vrpType);
+            writeDepotSection(vrpWriter, locationList);
         } catch (IOException e) {
             throw new IllegalArgumentException("Could not read the locationFile (" + locationFile.getName()
                     + ") or write the vrpOutputFile (" + vrpOutputFile.getName() + ").", e);
@@ -52,7 +51,6 @@ public class VRPService {
     public List<Address> readLocationFile(File locationFile) throws FileNotFoundException {
     	 List<Address> locationList = new ArrayList<Address>(3000);
          BufferedReader bufferedReader = null;
-         String cvsSplitBy = ",";
          int id = 0;
          try {
         	 bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(locationFile), "UTF-8"));
@@ -136,8 +134,7 @@ public class VRPService {
     private void writeDemandSection(BufferedWriter vrpWriter, int locationListSize, int depotListSize, int vehicleListSize, int capacity,
             List<Address> locationList, VrpType vrpType) throws IOException {
         vrpWriter.append("DEMAND_SECTION\n");
-        // maximumDemand is 2 times the averageDemand. And the averageDemand is 2/3th of available capacity
-        int maximumDemand = (4 * vehicleListSize * capacity) / (locationListSize * 3);
+        int maximumDemand = 1;
         int i = 0;
         Random random = new Random(37);
         for (Address location : locationList) {
@@ -149,47 +146,15 @@ public class VRPService {
             }
             vrpWriter.append(line).append("\n");
             i++;
-        }
-        
+        }    
     }
-   
-    private void writeDepotSection(BufferedWriter vrpWriter, List<Address> locationList, int depotListSize) throws IOException {
+    private void writeDepotSection(BufferedWriter vrpWriter, List<Address> locationList) throws IOException {
         vrpWriter.append("DEPOT_SECTION\n");
-        for (int i = 0; i < depotListSize; i++) {
-        	Address location = locationList.get(i);
-            vrpWriter.append(Long.toString(location.getId())).append("\n");
-        }
+        Address location = locationList.get(0);
+        vrpWriter.append(Integer.toString(location.getId()));
+        vrpWriter.append("\n");
         vrpWriter.append("-1\n");
         vrpWriter.append("EOF\n");
-    }
-
-    private List<Address> readHubList(File hubFile, GenerationDistanceType distanceType) {
-       
-        List<Address> locationList = new ArrayList<Address>(3000);
-        BufferedReader bufferedReader = null;
-        int id = 0;
-        try {
-            bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(hubFile), "UTF-8"));
-            for (String line = bufferedReader.readLine(); line != null; line = bufferedReader.readLine()) {
-                String[] tokens = line.split(" ");
-                if (tokens.length != 4) {
-                    throw new IllegalArgumentException("The line (" + line + ") does not have 4 tokens ("
-                            + tokens.length + ").");
-                }
-                Address location = new Address();
-                location.setId(id);
-                id++;
-                location.setLatitude(Double.parseDouble(tokens[1]));
-                location.setLongitude(Double.parseDouble(tokens[2]));
-                locationList.add(location);
-            }
-        } catch (IOException e) {
-            throw new IllegalArgumentException("Could not read the hubFile (" + hubFile + ").", e);
-        } finally {
-            IOUtils.closeQuietly(bufferedReader);
-        }
-       System.out.println("Read {} cities."+ locationList.size());
-        return locationList;
     }
 
    
