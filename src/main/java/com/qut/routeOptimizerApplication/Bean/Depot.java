@@ -1,6 +1,7 @@
 package com.qut.routeOptimizerApplication.Bean;
 
 public class Depot {
+	protected int id;
 protected Address address;
 protected int demand;
 public Address getAddress() {
@@ -17,6 +18,14 @@ public int getDemand() {
 
 public void setDemand(int demand) {
 	this.demand = demand;
+}
+
+public int getId() {
+	return id;
+}
+
+public void setId(int id) {
+	this.id = id;
 }
 
 }

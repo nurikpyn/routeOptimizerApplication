@@ -54,7 +54,7 @@ public class DistanceService {
 			for (int j = 0; j < locationLength; j++) {
 				resultBean =new ResultsBean();
 				resultBean=getDistance( uploadInvoiceBean.get(i), uploadInvoiceBean.get(j));
-				edgeMatrix[i][j]=resultBean.getDistance();
+				edgeMatrix[i][j]=resultBean.getDistance()/1000;
 				resultsBeanList.add(resultBean);
 			}
 		}

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1>Index page</h1>
+    <h1>Index .kjhljkshalkjbkjhbkjpage</h1>
 </body>
 
 <c:if test="${distanceArray}">
