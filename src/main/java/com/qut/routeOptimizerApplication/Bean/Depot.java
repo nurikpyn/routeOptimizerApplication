@@ -1,31 +1,45 @@
 package com.qut.routeOptimizerApplication.Bean;
 
-public class Depot {
-	protected int id;
-protected Address address;
-protected int demand;
-public Address getAddress() {
-	return address;
-}
+import org.optaplanner.examples.common.domain.AbstractPersistable;
 
-public void setAddress(Address address) {
-	this.address = address;
-}
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-public int getDemand() {
-	return demand;
-}
+@XStreamAlias("VrpDepot")
 
-public void setDemand(int demand) {
-	this.demand = demand;
-}
+public class Depot extends AbstractPersistable {
 
-public int getId() {
-	return id;
-}
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	protected Address location;
 
-public void setId(int id) {
-	this.id = id;
-}
+    public Address getLocation() {
+        return location;
+    }
+
+    public void setLocation(Address location) {
+        this.location = location;
+    }
+
+    // ************************************************************************
+    // Complex methods
+    // ************************************************************************
+
+    /**
+     * @param standstill never null
+     * @return a positive number, the distance multiplied by 1000 to avoid floating point arithmetic rounding errors
+     */
+    public long getDistanceTo(Standstill standstill) {
+        return location.getDistanceTo(standstill.getLocation());
+    }
+
+    @Override
+    public String toString() {
+        if (location.getName() == null) {
+            return super.toString();
+        }
+        return location.getName();
+    }
 
 }

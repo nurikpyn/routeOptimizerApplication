@@ -4,21 +4,21 @@ import java.util.List;
 
 public class AddressListBean {
 
-	private List<Address> locationList;
+	private List<RoadLocation> locationList;
 	
-	public List<Address> getLocationList() {
+	public List<RoadLocation> getLocationList() {
 		return locationList;
 	}
 	public AddressListBean() {
 		
 	}
-	public AddressListBean(List<Address> locationList, String status) {
+	public AddressListBean(List<RoadLocation> locationList, String status) {
 		super();
 		this.locationList = locationList;
 		this.status = status;
 	}
 
-	public void setLocationList(List<Address> locationList) {
+	public void setLocationList(List<RoadLocation> locationList) {
 		this.locationList = locationList;
 	}
 

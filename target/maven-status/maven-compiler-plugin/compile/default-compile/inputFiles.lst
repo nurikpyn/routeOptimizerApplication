@@ -4,6 +4,7 @@ C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOpt
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\Bean\ResultsBean.java
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\Bean\AddressListBean.java
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\vrpGenerator\DataSource.java
+C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\VehicleRoutingEasyScoreCalculator.java
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\Bean\Address.java
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\SolutionDao.java
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\VehicleService.java

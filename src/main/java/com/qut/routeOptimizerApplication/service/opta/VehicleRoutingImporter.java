@@ -60,7 +60,7 @@ public class VehicleRoutingImporter extends AbstractTxtSolutionImporter<VehicleR
         private int customerListSize;
         private int vehicleListSize;
         private int capacity;
-        private Map<Integer, Address> locationMap;
+        private Map<Long, Address> locationMap;
         private List<Depot> depotList;
 
         @Override
@@ -141,7 +141,6 @@ public class VehicleRoutingImporter extends AbstractTxtSolutionImporter<VehicleR
                 String[] lineTokens = splitBySpacesOrTabs(line.trim(), 3, 4);
                 Address location;
                 switch (distanceType) {
-                 
                     case ROAD_DISTANCE:
                         location = new RoadLocation();
                         break;
@@ -150,6 +149,7 @@ public class VehicleRoutingImporter extends AbstractTxtSolutionImporter<VehicleR
                                 + ") is not implemented.");
 
                 }
+                location=new RoadLocation();
                 location.setId(Integer.parseInt(lineTokens[0]));
                 location.setLatitude(Double.parseDouble(lineTokens[1]));
                 location.setLongitude(Double.parseDouble(lineTokens[2]));
@@ -158,7 +158,7 @@ public class VehicleRoutingImporter extends AbstractTxtSolutionImporter<VehicleR
                 }
                 customerAddressList.add(location);
                 System.out.println(location.getId()+"location"+location.getLatitude()+location.getLongitude());
-                locationMap.put(location.getId(), location);
+                locationMap.put((long)location.getId(), location);
             }
             if (distanceType == DistanceType.ROAD_DISTANCE) {
                 readConstantLine("EDGE_WEIGHT_SECTION");
@@ -182,7 +182,9 @@ public class VehicleRoutingImporter extends AbstractTxtSolutionImporter<VehicleR
                     location.setTravelDistanceMap(travelDistanceMap);
                 }
             }
-            
+            List<Address> locationList;
+            locationList = customerAddressList;
+        solution.setAddressList(locationList); 
         }
 
         private void readVrpWebCustomerList() throws IOException {
@@ -192,21 +194,22 @@ public class VehicleRoutingImporter extends AbstractTxtSolutionImporter<VehicleR
             for (int i = 0; i < customerListSize; i++) {
                 String line = bufferedReader.readLine();
                 String[] lineTokens = splitBySpacesOrTabs(line.trim(), timewindowed ? 5 : 2);
-                int id = Integer.parseInt(lineTokens[0]);
+                long id = Long.parseLong(lineTokens[0]);
                 int demand = Integer.parseInt(lineTokens[1]);
                 // Depots have no demand
                 if (demand == 0) {
-                    Depot depot = new Depot();
+                    Depot depot =  new Depot();
                     depot.setId(id);
+                    System.out.println("the size"+locationMap.size());
                     Address location = locationMap.get(id);
                     if (location == null) {
                         throw new IllegalArgumentException("The depot with id (" + id
                                 + ") has no location (" + location + ").");
                     }
-                    depot.setAddress(location);
+                    depot.setLocation(location);
                     depotList.add(depot);
                 } else {
-                    Customer customer =  new Customer();
+                    Customer customer =new Customer();
                     customer.setId(id);
                     Address location = locationMap.get(id);
                     if (location == null) {
@@ -222,6 +225,7 @@ public class VehicleRoutingImporter extends AbstractTxtSolutionImporter<VehicleR
             solution.setCustomerList(customerList);
             solution.setDepotList(depotList);
         }
+
         private void readVrpWebDepotList() throws IOException {
             readConstantLine("DEPOT_SECTION");
             int depotCount = 0;
@@ -259,7 +263,7 @@ public class VehicleRoutingImporter extends AbstractTxtSolutionImporter<VehicleR
 
         private void createVehicleList() {
             List<Vehicle> vehicleList = new ArrayList<>(vehicleListSize);
-            int id = 0;
+            long id =  0;
             for (int i = 0; i < vehicleListSize; i++) {
                 Vehicle vehicle = new Vehicle();
                 vehicle.setId(id);

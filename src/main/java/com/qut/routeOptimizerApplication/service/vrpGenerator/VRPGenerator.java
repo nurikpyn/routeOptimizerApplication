@@ -26,7 +26,7 @@ public class VRPGenerator {
 	public File generateVrp(File locationFile, int depotListSize, int vehicleListSize,
 			int capacity, GenerationDistanceType distanceType, VrpType vrpType) throws FileNotFoundException {
 		VRPGenerator vrpService = new VRPGenerator();
-		List<Address> locationList = vrpService.readLocationFile(locationFile);
+		List<RoadLocation> locationList = vrpService.readLocationFile(locationFile);
 		int locationListSize=locationList.size();
 		DistanceService dist = new DistanceService();
 		double[][] distanceList = dist.calculateEdgeMatrix(locationList);
@@ -53,11 +53,11 @@ public class VRPGenerator {
 		return vrpOutputFile;
 	}
 
-	public List<Address> readLocationFile(File locationFile) throws FileNotFoundException {
-		List<Address> locationList = new ArrayList<Address>(3000);
+	public List<RoadLocation> readLocationFile(File locationFile) throws FileNotFoundException {
+		List<RoadLocation> locationList = new ArrayList<RoadLocation>(3000);
 		BufferedReader bufferedReader = null;
 		int id = 0;
-		RoadLocation location=new RoadLocation();
+		RoadLocation location;
 		try {
 			bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(locationFile), "UTF-8"));
 			for (String line = bufferedReader.readLine(); line != null; line = bufferedReader.readLine()) {
@@ -66,7 +66,7 @@ public class VRPGenerator {
 					throw new IllegalArgumentException(
 							"The line (" + line + ") does not have 4 tokens (" + tokens.length + ").");
 				}
-				
+				location=new RoadLocation();
 				location.setId(id);
 				id++;
 				location.setLatitude(Double.parseDouble(tokens[1]));
@@ -115,9 +115,9 @@ public class VRPGenerator {
 		return vrpWriter;
 	}
 
-	private void writeNodeCoordSection(BufferedWriter vrpWriter, List<Address> locationList) throws IOException {
+	private void writeNodeCoordSection(BufferedWriter vrpWriter, List<RoadLocation> locationList) throws IOException {
 		vrpWriter.write("NODE_COORD_SECTION\n");
-		for (Address location : locationList) {
+		for (RoadLocation location : locationList) {
 			vrpWriter.write(location.getId() + " " + location.getLatitude() + " " + location.getLongitude()
 					+ (location.getName() != null ? " " + location.getName().replaceAll(" ", "_") : "") + "\n");
 		}
@@ -143,7 +143,7 @@ public class VRPGenerator {
 	}
 
 	private void writeDemandSection(BufferedWriter vrpWriter, int locationListSize, int depotListSize,
-			int vehicleListSize, int capacity, List<Address> locationList, VrpType vrpType) throws IOException {
+			int vehicleListSize, int capacity, List<RoadLocation> locationList, VrpType vrpType) throws IOException {
 		vrpWriter.append("DEMAND_SECTION\n");
 		int maximumDemand = 1;
 		int i = 0;
@@ -160,7 +160,7 @@ public class VRPGenerator {
 		}
 	}
 
-	private void writeDepotSection(BufferedWriter vrpWriter, List<Address> locationList) throws IOException {
+	private void writeDepotSection(BufferedWriter vrpWriter, List<RoadLocation> locationList) throws IOException {
 		vrpWriter.append("DEPOT_SECTION\n");
 		Address location = locationList.get(0);
 		vrpWriter.append(Integer.toString(location.getId()));

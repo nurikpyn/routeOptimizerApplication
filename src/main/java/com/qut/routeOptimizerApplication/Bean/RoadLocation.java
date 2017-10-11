@@ -2,38 +2,44 @@ package com.qut.routeOptimizerApplication.Bean;
 
 import java.util.Map;
 
-public class RoadLocation extends Address{
+import com.qut.routeOptimizerApplication.service.opta.DistanceType;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-		    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-			// Prefer Map over array or List because customers might be added and removed in real-time planning.
-		    protected Map<RoadLocation, Double> travelDistanceMap;
+/**
+ * The cost between 2 locations was precalculated on a real road network route.
+ * The cost itself might be the distance in km, the travel time, the fuel usage or a weighted function of any of those.
+ * Used with {@link DistanceType#ROAD_DISTANCE}.
+ */
+@XStreamAlias("VrpRoadLocation")
+public class RoadLocation extends Address {
 
-		    public RoadLocation() {
-		    }
+    // Prefer Map over array or List because customers might be added and removed in real-time planning.
+    protected Map<RoadLocation, Double> travelDistanceMap;
 
-		    public RoadLocation(int id, double latitude, double longitude) {
-		        super(id, latitude, longitude);
-		    }
+    public RoadLocation() {
+    }
 
-		    public Map<RoadLocation, Double> getTravelDistanceMap() {
-		        return travelDistanceMap;
-		    }
+    public RoadLocation(int id, double latitude, double longitude) {
+        super(id, latitude, longitude);
+    }
 
-		    public void setTravelDistanceMap(Map<RoadLocation, Double> travelDistanceMap) {
-		        this.travelDistanceMap = travelDistanceMap;
-		    }
+    public Map<RoadLocation, Double> getTravelDistanceMap() {
+        return travelDistanceMap;
+    }
 
-	
-		    public long getDistanceTo(Address location) {
-		        if (this == location) {
-		            return 0L;
-		        }
-		        double distance = travelDistanceMap.get((RoadLocation) location);
-		        // Multiplied by 1000 to avoid floating point arithmetic rounding errors
-		        return (long) (distance * 1000.0 + 0.5);
-		    }
+    public void setTravelDistanceMap(Map<RoadLocation, Double> travelDistanceMap) {
+        this.travelDistanceMap = travelDistanceMap;
+    }
+
+    @Override
+    public long getDistanceTo(Address location) {
+        if (this == location) {
+            return 0L;
+        }
+        double distance = travelDistanceMap.get((RoadLocation) location);
+        // Multiplied by 1000 to avoid floating point arithmetic rounding errors
+        return (long) (distance * 1000.0 + 0.5);
+    }
 
 }
+

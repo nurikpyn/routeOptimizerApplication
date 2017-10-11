@@ -10,6 +10,7 @@ import com.graphhopper.routing.util.EncodingManager;
 import com.graphhopper.util.shapes.GHPoint;
 import com.qut.routeOptimizerApplication.Bean.Address;
 import com.qut.routeOptimizerApplication.Bean.ResultsBean;
+import com.qut.routeOptimizerApplication.Bean.RoadLocation;
 import com.qut.routeOptimizerApplication.properties.RouteOptimzerProperties;
 
 public class DistanceService {
@@ -45,7 +46,7 @@ public class DistanceService {
 		return resultbean;
 	}
 
-	public double[][] calculateEdgeMatrix(List<Address> uploadInvoiceBean) {
+	public double[][] calculateEdgeMatrix(List<RoadLocation> uploadInvoiceBean) {
 		int locationLength = uploadInvoiceBean.size();
 		List<ResultsBean> resultsBeanList=new ArrayList<ResultsBean>();
 		double[][] edgeMatrix=new double[locationLength][locationLength];
