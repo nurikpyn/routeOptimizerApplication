@@ -100,7 +100,7 @@ public abstract class AbstractSolutionImporter<Solution_> extends LoggingMain {
         convert(inputFile, outputFile);
     }
 
-    protected void convert(File inputFile, File outputFile) {
+    public void convert(File inputFile, File outputFile) {
         Solution_ solution = readSolution(inputFile);
         solutionDao.writeSolution(solution, outputFile);
     }
