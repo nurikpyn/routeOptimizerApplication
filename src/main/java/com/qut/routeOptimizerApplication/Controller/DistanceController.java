@@ -9,13 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.qut.routeOptimizerApplication.Bean.AddressListBean;
-import com.qut.routeOptimizerApplication.service.OptaResult;
-import com.qut.routeOptimizerApplication.service.vrpGenerator.GenerationDistanceType;
-import com.qut.routeOptimizerApplication.service.vrpGenerator.VRPGenerator;
-import com.qut.routeOptimizerApplication.service.vrpGenerator.VrpType;
+import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.app.VehicleRoutingApp;
+import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain.AddressListBean;
+import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.persistence.VehicleRoutingDao;
+import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.persistence.VehicleRoutingImporter;
+import com.qut.routeOptimizerApplication.service.opta.vrpGenerator.GenerationDistanceType;
+import com.qut.routeOptimizerApplication.service.opta.vrpGenerator.VRPGenerator;
+import com.qut.routeOptimizerApplication.service.opta.vrpGenerator.VrpType;
 
 @Controller
 public class DistanceController {
@@ -25,14 +26,13 @@ public class DistanceController {
 	}
 	@RequestMapping(value = "/save",method = RequestMethod.GET)
 	public String generateVRP(@ModelAttribute("locations") AddressListBean addressListBean) throws FileNotFoundException {
-		System.out.println("inside getDistanceMatrix");
-		 OptaResult res=new OptaResult();
-		ModelAndView model=new ModelAndView();
-		 File locationFile = new File("C:\\Users\\pretty\\Desktop\\routeOptimizerApplication\\data\\australia.csv");
-         VRPGenerator vrpService=new VRPGenerator();
-         File inputFile=vrpService.generateVrp(locationFile, 1, 5, 100, GenerationDistanceType.ROAD_DISTANCE_KM, VrpType.BASIC);
-        res.OptimizeVrp(inputFile);
-		model.addObject("distanceArray");
+	File locationFile = new File("C:\\Users\\pretty\\Desktop\\routeOptimizerApplication\\data\\australia.csv");
+      VRPGenerator vrpService=new VRPGenerator();
+      VehicleRoutingDao route=new VehicleRoutingDao();
+      VehicleRoutingImporter imp=new VehicleRoutingImporter();
+      File inputFile=vrpService.generateVrp(locationFile, 1, 2, 100, GenerationDistanceType.ROAD_DISTANCE_KM, VrpType.BASIC);
+      imp.convert(inputFile.getName(), "cvrp-5customers.xml");
+      VehicleRoutingApp vrp=new VehicleRoutingApp();
 		return "distanceMatrix";
 	}
 }
