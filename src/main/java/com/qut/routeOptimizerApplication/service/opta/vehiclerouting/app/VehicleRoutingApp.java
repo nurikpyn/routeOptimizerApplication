@@ -29,10 +29,10 @@ public class VehicleRoutingApp extends CommonApp<VehicleRoutingSolution> {
     public static final String SOLVER_CONFIG
             = "vehiclerouting/solver/vehicleRoutingSolverConfig.xml";
 
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         prepareSwingEnvironment();
         new VehicleRoutingApp().init();
-    }
+    }*/
 
     public VehicleRoutingApp() {
         super("Vehicle routing",

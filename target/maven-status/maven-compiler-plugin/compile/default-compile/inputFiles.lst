@@ -48,6 +48,7 @@ C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOpt
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\Controller\DistanceController.java
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\vrpGenerator\VrpType.java
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\SpringBootWebApplication.java
+C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\vehiclerouting\domain\OptimizerInput.java
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\common\persistence\AbstractXmlSolutionExporter.java
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\common\swingui\timetable\TimeTablePanel.java
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\common\domain\PersistableIdComparator.java
