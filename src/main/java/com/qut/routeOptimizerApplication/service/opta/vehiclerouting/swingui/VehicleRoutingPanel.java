@@ -35,7 +35,7 @@ import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain.time
 
 public class VehicleRoutingPanel extends SolutionPanel<VehicleRoutingSolution> {
 
-    public static final String LOGO_PATH = "/org/optaplanner/examples/vehiclerouting/swingui/vehicleRoutingLogo.png";
+    public static final String LOGO_PATH = "/vehiclerouting/swingui/vehicleRoutingLogo.png";
 
     private VehicleRoutingWorldPanel vehicleRoutingWorldPanel;
 

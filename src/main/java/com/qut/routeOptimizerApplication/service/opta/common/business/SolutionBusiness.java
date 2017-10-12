@@ -176,8 +176,11 @@ public class SolutionBusiness<Solution_> {
 
     public void setSolver(Solver<Solution_> solver) {
         this.solver = solver;
+        System.out.println("finished upto here");
         ScoreDirectorFactory<Solution_> scoreDirectorFactory = solver.getScoreDirectorFactory();
+        System.out.println("finished upto here"+scoreDirectorFactory.toString());
         guiScoreDirector = scoreDirectorFactory.buildScoreDirector();
+        System.out.println("finished upto here"+guiScoreDirector.toString());
     }
 
     public List<File> getUnsolvedFileList() {

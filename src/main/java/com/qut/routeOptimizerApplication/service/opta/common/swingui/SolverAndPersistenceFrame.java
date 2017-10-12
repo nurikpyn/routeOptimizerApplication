@@ -70,15 +70,12 @@ import com.qut.routeOptimizerApplication.service.opta.common.persistence.Abstrac
  */
 public class SolverAndPersistenceFrame<Solution_> extends JFrame {
 
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	protected final transient Logger logger = LoggerFactory.getLogger(getClass());
 
     public static final ImageIcon OPTA_PLANNER_ICON = new ImageIcon(
-            SolverAndPersistenceFrame.class.getResource("optaPlannerIcon.png"));
+            SolverAndPersistenceFrame.class.getResource("/vehiclerouting/swingui/optaPlannerIcon.png"));
 
     private final SolutionBusiness<Solution_> solutionBusiness;
     private final ImageIcon indictmentHeatMapTrueIcon;
@@ -111,15 +108,17 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
     public SolverAndPersistenceFrame(SolutionBusiness<Solution_> solutionBusiness,
             SolutionPanel<Solution_> solutionPanel) {
         super(solutionBusiness.getAppName() + " OptaPlanner example");
+        System.out.println("OPTA_PLANNER_ICON"+OPTA_PLANNER_ICON+solutionBusiness.getAppName());
         this.solutionBusiness = solutionBusiness;
         this.solutionPanel = solutionPanel;
+        System.out.println("OPTA_PLANNER_ICON"+OPTA_PLANNER_ICON);
         setIconImage(OPTA_PLANNER_ICON.getImage());
         solutionPanel.setSolutionBusiness(solutionBusiness);
         solutionPanel.setSolverAndPersistenceFrame(this);
-        indictmentHeatMapTrueIcon = new ImageIcon(getClass().getResource("indictmentHeatMapTrueIcon.png"));
-        indictmentHeatMapFalseIcon = new ImageIcon(getClass().getResource("indictmentHeatMapFalseIcon.png"));
-        refreshScreenDuringSolvingTrueIcon = new ImageIcon(getClass().getResource("refreshScreenDuringSolvingTrueIcon.png"));
-        refreshScreenDuringSolvingFalseIcon = new ImageIcon(getClass().getResource("refreshScreenDuringSolvingFalseIcon.png"));
+        indictmentHeatMapTrueIcon = new ImageIcon(getClass().getResource("/vehiclerouting/common/swingui/indictmentHeatMapTrueIcon.png"));
+        indictmentHeatMapFalseIcon = new ImageIcon(getClass().getResource("/vehiclerouting/common/swingui/indictmentHeatMapFalseIcon.png"));
+        refreshScreenDuringSolvingTrueIcon = new ImageIcon(getClass().getResource("/vehiclerouting/common/swingui/refreshScreenDuringSolvingTrueIcon.png"));
+        refreshScreenDuringSolvingFalseIcon = new ImageIcon(getClass().getResource("/vehiclerouting/common/swingui/refreshScreenDuringSolvingFalseIcon.png"));
         registerListeners();
         constraintMatchesDialog = new ConstraintMatchesDialog(this, solutionBusiness);
     }
@@ -302,7 +301,7 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
     private class SolveAction extends AbstractAction {
 
         public SolveAction() {
-            super("Solve", new ImageIcon(SolverAndPersistenceFrame.class.getResource("solveAction.png")));
+            super("Solve", new ImageIcon(SolverAndPersistenceFrame.class.getResource("/vehiclerouting/common/swingui/solveAction.png")));
         }
 
         @Override
@@ -349,7 +348,7 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
 
         public TerminateSolvingEarlyAction() {
             super("Terminate solving early",
-                    new ImageIcon(SolverAndPersistenceFrame.class.getResource("terminateSolvingEarlyAction.png")));
+                    new ImageIcon(SolverAndPersistenceFrame.class.getResource("/vehiclerouting/common/swingui/terminateSolvingEarlyAction.png")));
         }
 
         @Override
@@ -368,7 +367,7 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
         private JFileChooser fileChooser;
 
         public OpenAction() {
-            super(NAME, new ImageIcon(SolverAndPersistenceFrame.class.getResource("openAction.png")));
+            super(NAME, new ImageIcon(SolverAndPersistenceFrame.class.getResource("/vehiclerouting/common/swingui/openAction.png")));
             fileChooser = new JFileChooser(solutionBusiness.getSolvedDataDir());
             fileChooser.setFileFilter(new FileFilter() {
                 @Override
@@ -406,7 +405,7 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
         private JFileChooser fileChooser;
 
         public SaveAction() {
-            super(NAME, new ImageIcon(SolverAndPersistenceFrame.class.getResource("saveAction.png")));
+            super(NAME, new ImageIcon(SolverAndPersistenceFrame.class.getResource("/vehiclerouting/common/swingui/saveAction.png")));
             fileChooser = new JFileChooser(solutionBusiness.getSolvedDataDir());
             fileChooser.setFileFilter(new FileFilter() {
                 @Override
@@ -450,7 +449,7 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
         private JFileChooser fileChooser;
 
         public ImportAction() {
-            super(NAME, new ImageIcon(SolverAndPersistenceFrame.class.getResource("importAction.png")));
+            super(NAME, new ImageIcon(SolverAndPersistenceFrame.class.getResource("/vehiclerouting/common/swingui/importAction.png")));
             if (!solutionBusiness.hasImporter()) {
                 fileChooser = null;
                 return;
@@ -517,7 +516,7 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
         private final JFileChooser fileChooser;
 
         public ExportAction() {
-            super(NAME, new ImageIcon(SolverAndPersistenceFrame.class.getResource("exportAction.png")));
+            super(NAME, new ImageIcon(SolverAndPersistenceFrame.class.getResource("/vehiclerouting/common/swingui/exportAction.png")));
             if (!solutionBusiness.hasExporter()) {
                 fileChooser = null;
                 return;
@@ -622,7 +621,7 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
     private class ShowConstraintMatchesDialogAction extends AbstractAction {
 
         public ShowConstraintMatchesDialogAction() {
-            super("Constraint matches", new ImageIcon(SolverAndPersistenceFrame.class.getResource("showConstraintMatchesDialogAction.png")));
+            super("Constraint matches", new ImageIcon(SolverAndPersistenceFrame.class.getResource("/vehiclerouting/common/swingui/showConstraintMatchesDialogAction.png")));
         }
 
         @Override
