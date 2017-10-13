@@ -36,6 +36,7 @@ public class DistanceController {
       VRPGenerator vrpService=new VRPGenerator();
       VehicleRoutingImporter imp=new VehicleRoutingImporter();
       addressListBean.setVehicleCount(2);
+      addressListBean.setVehicleCapacity(8);
       List<Location> locationList=vrpService.readLocationFile(locationFile);      
       File inputFile=vrpService.generateVrp(locationFile,1 , addressListBean.getVehicleCount(), addressListBean.getVehicleCapacity(), GenerationDistanceType.ROAD_DISTANCE_KM, VrpType.BASIC);
       String outputFileName="cvrp-"+locationList.size()+"customers.xml";

@@ -110,7 +110,6 @@ public class SolverAndPersistenceFrame<Solution_> extends JFrame {
         super(solutionBusiness.getAppName() + " OptaPlanner example");
         this.solutionBusiness = solutionBusiness;
         this.solutionPanel = solutionPanel;
-        System.out.println("OPTA_PLANNER_ICON"+OPTA_PLANNER_ICON);
         setIconImage(OPTA_PLANNER_ICON.getImage());
         solutionPanel.setSolutionBusiness(solutionBusiness);
         solutionPanel.setSolverAndPersistenceFrame(this);

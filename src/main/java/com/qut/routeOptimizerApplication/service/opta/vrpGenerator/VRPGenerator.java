@@ -36,6 +36,7 @@ public class VRPGenerator {
 		File vrpOutputFile = createVrpOutputFile(name, distanceType, vrpType, depotListSize != 1);
 		BufferedWriter vrpWriter = null;
 		try {
+			System.out.println("capacity"+capacity);
 			vrpWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(vrpOutputFile), "UTF-8"));
 			vrpWriter = writeHeaders(vrpWriter, locationListSize, capacity, distanceType, vrpType, name);
 			writeNodeCoordSection(vrpWriter, locationList);
