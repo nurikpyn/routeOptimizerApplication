@@ -42,8 +42,8 @@ public class DistanceController {
       int customerSize=locationList.size()-1;
       String outputFileName="cvrp-"+customerSize+"cus-"+addressListBean.getVehicleCount()+"veh-"+addressListBean.getVehicleCapacity()+"cap.xml";
       imp.convert(inputFile.getName(), outputFileName);
-      CommonApp.prepareSwingEnvironment();
-      new VehicleRoutingApp().init();
+    /* CommonApp.prepareSwingEnvironment();
+      new VehicleRoutingApp().init();*/
 		return "distanceMatrix";
 	}
 	@RequestMapping(value = "/fileSave",method = RequestMethod.GET)
