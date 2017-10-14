@@ -7,7 +7,7 @@ public final class RouteOptimzerProperties {
      public final String dataSourceDir = "C:\\Users\\pretty\\Desktop\\routeOptimizerApplication\\data\\vehiclerouting\\import\\";
      public final String locationFilepath="C:\\Users\\pretty\\Desktop\\routeOptimizerApplication\\data\\australia.csv";
      public final String country="australia"; 
-     private static final String solved = "\\routeOptimizerApplication\\data\\vehiclerouting\\";
+     public  final String solved = "C:\\Users\\pretty\\Desktop\\routeOptimizerApplication\\data\\vehiclerouting\\solved\\";
 
      
 }

@@ -1,9 +1,7 @@
 package com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain.input;
 
-import java.io.File;
-
 public class JsonFileInput {
-	private File locationFile;
+	private String locationFilePath;
 	private int vehicleCount;
 	private int vehicleCapacity;
 	private int depotListSize;
@@ -11,9 +9,9 @@ public class JsonFileInput {
 		
 	}
 	
-	public JsonFileInput(File locationFile, int vehicleCount, int vehicleCapacity, int depotListSize) {
+	public JsonFileInput(String locationFilePath, int vehicleCount, int vehicleCapacity, int depotListSize) {
 		super();
-		this.locationFile = locationFile;
+		this.locationFilePath = locationFilePath;
 		this.vehicleCount = vehicleCount;
 		this.vehicleCapacity = vehicleCapacity;
 		this.depotListSize = depotListSize;
@@ -27,12 +25,15 @@ public class JsonFileInput {
 		this.depotListSize = depotListSize;
 	}
 
-	public File getLocationFile() {
-		return locationFile;
+	
+	public String getLocationFilePath() {
+		return locationFilePath;
 	}
-	public void setLocationFile(File locationFile) {
-		this.locationFile = locationFile;
+
+	public void setLocationFilePath(String locationFilePath) {
+		this.locationFilePath = locationFilePath;
 	}
+
 	public int getVehicleCount() {
 		return vehicleCount;
 	}
@@ -48,7 +49,7 @@ public class JsonFileInput {
 
 	@Override
 	public String toString() {
-		return "JsonFileInput [locationFile=" + locationFile + ", vehicleCount=" + vehicleCount + ", vehicleCapacity="
+		return "JsonFileInput [locationFile=" + locationFilePath + ", vehicleCount=" + vehicleCount + ", vehicleCapacity="
 				+ vehicleCapacity + ", depotListSize=" + depotListSize + "]";
 	}
 	
