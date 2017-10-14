@@ -164,7 +164,7 @@ i {
 }
 
 #mapid {
-    height: 180px;
+    min-height: 250px;
 }
 
 .fa-trash-o {
@@ -172,4 +172,43 @@ i {
     line-height: 30px;
     position: absolute;
     right: 0;
+}
+
+.results-wrapper {
+    display: block;
+}
+
+.results-wrapper .list-wrapper {
+    display: inline-block;
+    width: 18%;
+    float: left;
+}
+
+.results-wrapper .list-wrapper ul {
+    padding: 0;
+}
+
+.results-wrapper .list-wrapper li {
+    list-style-type: none;
+    border-bottom: 1px solid #ddd;
+    padding: 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.results-wrapper .list-wrapper li.active {
+    background: #fafafa;
+}
+
+.results-wrapper .map-wrapper {
+    display: inline-block;
+    width: 80%;
+    float: right;
+}
+
+.results-wrapper .map-wrapper .loader {
+    text-align: center;
+    height: 80px;
+    line-height: 80px;
+    font-size: 1.5em;
 }

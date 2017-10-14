@@ -3,18 +3,27 @@ angular.module('routeOptimizer')
         var vm = this;
 
         //public scope
+
         vm.manualObj = {
-            "customers": [{
-                "latitude": "",
-                "longitude": ""
+            "customerList": [{
+                "locationName": null,
+                "latitude": 0,
+                "longitude": 0
                 }],
-            "noVehicles": 0,
-            "vehicleCapacity": 0
+            "vehicleCount": 0,
+            "vehicleCapacity": 0,
+            "depot": {
+                "locationName": null,
+                "latitude": 0,
+                "longitude": 0
+            }
         };
 
         vm.fileObj = {
-            "noVehicle": 0,
-            "vehicleCapacity": 0
+            "locationFile": "",
+            "vehicleCount": 0,
+            "vehicleCapacity": 0,
+            "depotListSize": 1
         };
 
         vm.selectedTab = 'FILE';
@@ -32,37 +41,87 @@ angular.module('routeOptimizer')
 
         function addUser() {
             var obj = {
-                "latitude": "",
-                "longitude": ""
-            };
-            vm.manualObj.customers.push(obj);
+                "locationName": null,
+                "latitude": 0,
+                "longitude": 0
+            }
+            vm.manualObj.customerList.push(obj);
         }
 
         function deleteUser(index) {
-            vm.manualObj.customers.splice(index, 1);
+            vm.manualObj.customerList.splice(index, 1);
         }
 
         function reset() {
             $state.reload();
         }
 
+        function checkDuplicates() {
+            var duplicated = false;
+            var combinedList = angular.copy(vm.manualObj.customerList);
+            combinedList.push(vm.manualObj.depot);
+
+            angular.forEach(combinedList, function (listItem, listKey) {
+                var count = 0;
+                angular.forEach(combinedList, function (val, key) {
+                    if (angular.equals(listItem, val)) {
+                        count++;
+                    }
+                });
+                if (count > 1) {
+                    duplicated = true;
+                }
+            });
+            return duplicated;
+        }
+
         function submit() {
-            /*if (vm.selectedTab == 'MANUAL') {
-                console.log(vm.manualObj);
+          
+            if (vm.selectedTab == 'MANUAL') {
+            	  var url = "localhost:8080/save";
+                //console.log(vm.manualObj);
+                if (checkDuplicates()) {
+                    alert('duplicates found');
+                } else {
+                    $http.post(url, vm.manualObj).success(function (response) {
+                        $state.go('results');
+                    }).error(function (err) {
+                        //alert("some error has occured");
+                        //alert(err.message);
+                        $state.go('results');
+                    });
+                }
+
             } else {
-                var fd = new FormData();
-                fd.append("file", vm.selectedFile);
+            	  var url = "localhost:8080/fileSave";
+                $http.post(url, vm.fileObj).success(function (response) {
+                    $state.go('results');
+                }).error(function (err) {
+                    //alert("some error has occured");
+                    //alert(err.message);
+                    $state.go('results');
+                });
+
+                /*var fd = new FormData();
+                fd.append("locationFile", vm.selectedFile);
                 fd.append("vehicleData", angular.toJson(vm.fileObj));
 
-                $http.post("uploadUrl", fd, {
+                $http.post(url, fd, {
                     withCredentials: true,
                     headers: {
                         'Content-Type': undefined
                     },
                     transformRequest: angular.identity
-                }).success().error();
-            }*/
-            $state.go('results');
+                }).success(function (response) {
+                    $state.go('results');
+                }).error(function (err) {
+                    alert("some error has occured");
+                    //alert(err.message);
+                });*/
+
+
+            }
+
         }
     })
     .directive("fileread", [function () {

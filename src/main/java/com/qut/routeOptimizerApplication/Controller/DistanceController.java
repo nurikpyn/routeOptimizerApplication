@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qut.routeOptimizerApplication.properties.RouteOptimzerProperties;
 import com.qut.routeOptimizerApplication.service.OptimizerOutput;
 import com.qut.routeOptimizerApplication.service.opta.common.app.CommonApp;
@@ -30,7 +28,7 @@ import com.qut.routeOptimizerApplication.service.opta.vrpGenerator.VRPGenerator;
 import com.qut.routeOptimizerApplication.service.opta.vrpGenerator.VrpType;
 
 @Controller
-@RequestMapping("/routeOptimizerApplication")
+
 public class DistanceController {
 	
 	@RequestMapping("/")
@@ -105,7 +103,7 @@ public class DistanceController {
 		 sol=vr.readSolutionVRP(folder);
 		 return sol;
 	}
-
+	/*
 public static void main(String args[]) throws JsonProcessingException {
 
 		DistanceController dist=new DistanceController();
@@ -120,7 +118,7 @@ public static void main(String args[]) throws JsonProcessingException {
 		 System.out.println("solutionList"+q);
 }
 }
-	/*
+	
 	JsonFileInput fileIn=new JsonFileInput();
 	
 	RouteOptimzerProperties routeOptimzerProperties = new RouteOptimzerProperties();
@@ -141,5 +139,5 @@ public static void main(String args[]) throws JsonProcessingException {
 		e.printStackTrace();
 	}
 	
-	}
-}*/
+	}*/
+}
