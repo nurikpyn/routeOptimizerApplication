@@ -1,5 +1,6 @@
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\common\persistence\XStreamSolutionDao.java
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\common\swingui\components\Labeled.java
+C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\vehiclerouting\domain\JsonVehicleRoute.java
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\vehiclerouting\persistence\VehicleRoutingDao.java
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\vehiclerouting\domain\VehicleRoutingSolution.java
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\vehiclerouting\domain\Standstill.java
@@ -10,6 +11,7 @@ C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOpt
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\common\persistence\StringDataGenerator.java
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\common\app\LoggingMain.java
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\vehiclerouting\domain\timewindowed\solver\ArrivalTimeUpdatingVariableListener.java
+C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\vehiclerouting\domain\JsonCustomer.java
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\common\swingui\timetable\TimeTableLayout.java
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\vehiclerouting\domain\solver\DepotDistanceCustomerDifficultyWeightFactory.java
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\vehiclerouting\domain\Vehicle.java
@@ -45,7 +47,9 @@ C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOpt
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\common\persistence\SolutionDao.java
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\common\app\CommonBenchmarkApp.java
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\common\swingui\timetable\TimeTableLayoutConstraints.java
+C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\vehiclerouting\domain\JsonVehicleRoutingSolution.java
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\Controller\DistanceController.java
+C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\vehiclerouting\domain\JsonMessage.java
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\vrpGenerator\VrpType.java
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\SpringBootWebApplication.java
 C:\Users\pretty\Desktop\routeOptimizerApplication\src\main\java\com\qut\routeOptimizerApplication\service\opta\vehiclerouting\domain\OptimizerInput.java

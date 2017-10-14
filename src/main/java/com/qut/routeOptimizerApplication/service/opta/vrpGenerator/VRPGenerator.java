@@ -16,7 +16,9 @@ import java.util.Random;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 
+import com.qut.routeOptimizerApplication.properties.RouteOptimzerProperties;
 import com.qut.routeOptimizerApplication.service.DistanceService;
+import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain.Customer;
 import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain.location.Location;
 import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain.location.RoadLocation;
 
@@ -53,7 +55,37 @@ public class VRPGenerator {
 		System.out.println("Generated: {}" + vrpOutputFile);
 		return vrpOutputFile;
 	}
-
+	@SuppressWarnings("resource")
+	public File generateManualVrp(List<Location> locationList,String locationFileName, int depotListSize, int vehicleListSize,
+			int capacity, GenerationDistanceType distanceType, VrpType vrpType) {
+		VRPGenerator vrpService = new VRPGenerator();
+		int locationListSize=locationList.size();
+		DistanceService dist = new DistanceService();
+		double[][] distanceList = dist.calculateEdgeMatrix(locationList);
+		RouteOptimzerProperties rop=new RouteOptimzerProperties();
+		String name = locationFileName + distanceType.getFileSuffix()
+				+ vrpType.getFileSuffix() + (depotListSize != 1 ? "-d" + depotListSize : "") + "-n" + locationListSize
+				+ "-k" + vehicleListSize;
+		File vrpOutputFile = createVrpOutputFile(name, distanceType, vrpType, depotListSize != 1);
+		BufferedWriter vrpWriter = null;
+		try {
+			System.out.println("capacity"+capacity);
+			vrpWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(vrpOutputFile), "UTF-8"));
+			vrpWriter = writeHeaders(vrpWriter, locationListSize, capacity, distanceType, vrpType, name);
+			writeNodeCoordSection(vrpWriter, locationList);
+			writeEdgeWeightSection(vrpWriter, distanceType, distanceList, locationList.size());
+			writeDemandSection(vrpWriter, locationListSize, depotListSize, vehicleListSize, capacity, locationList,
+					vrpType);
+			writeDepotSection(vrpWriter, locationList);
+		} catch (IOException e) {
+			throw new IllegalArgumentException("Could not read the locationFile (" + locationFileName
+					+ ") or write the vrpOutputFile (" + vrpOutputFile.getName() + ").", e);
+		} finally {
+			IOUtils.closeQuietly(vrpWriter);
+		}
+		System.out.println("Generated: {}" + vrpOutputFile);
+		return vrpOutputFile;
+	}
 	public List<Location> readLocationFile(File locationFile) throws FileNotFoundException {
 		List<Location> locationList = new ArrayList<Location>(3000);
 		BufferedReader bufferedReader = null;
@@ -85,8 +117,8 @@ public class VRPGenerator {
 
 	private File createVrpOutputFile(String name, GenerationDistanceType distanceType, VrpType vrpType,
 			boolean multidepot) {
-		 String dataSourceDir = "C:\\Users\\pretty\\Desktop\\routeOptimizerApplication\\data\\vehiclerouting\\import\\";
-		 File vrpOutputFile = new File(dataSourceDir
+		RouteOptimzerProperties rop=new RouteOptimzerProperties();
+		 File vrpOutputFile = new File(rop.dataSourceDir
 	                + "/" + name + ".vrp");
 	        if (!vrpOutputFile.getParentFile().exists()) {
 	            throw new IllegalArgumentException("The vrpOutputFile parent directory (" + vrpOutputFile.getParentFile()

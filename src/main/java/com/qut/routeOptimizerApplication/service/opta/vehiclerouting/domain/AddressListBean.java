@@ -2,10 +2,12 @@ package com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain;
 
 import java.util.List;
 
-import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain.location.RoadLocation;
+import javax.xml.bind.annotation.XmlRootElement;
 
+import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain.location.RoadLocation;
+@XmlRootElement
 public class AddressListBean {
-private List<RoadLocation> locationList;
+private List<RoadLocation>  locationList;
 private int vehicleCount;
 private int vehicleCapacity;
 	public List<RoadLocation> getLocationList() {

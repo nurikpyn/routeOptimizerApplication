@@ -11,7 +11,20 @@
 <link rel="stylesheet" href="js/leaflet/leaflet.css" />
 
 <script type="text/javascript" src="js/leaflet/leaflet.js" ></script>
+<script type="text/javascript">
+  var map;
+  var vehicleRouteLayerGroup;
+  var intervalTimer;
 
+	  var map = L.map('map',{
+		    center: [-25.274398, 133.7751],
+		    zoom: 15
+		    });
+	  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+		    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+		    }).addTo(map);
+
+  </script>
 <style>
 #map {
     width: 960px;
@@ -24,19 +37,6 @@
 <body>
 
     <div id="map"></div>
-
-<script>
-
-    var map = L.map('map',{
-    center: [43.64701, -79.39425],
-    zoom: 15
-    });
-
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-</script>
 
 </body>
 
