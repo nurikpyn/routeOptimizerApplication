@@ -1,25 +1,17 @@
 package com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
 public class JsonCustomer {
 
-    protected String locationName;
+
+	protected String locationName;
+	
     protected double latitude;
+	
     protected double longitude;
+
     protected int demand;
 
-    public JsonCustomer() {
-    }
-
-    public JsonCustomer( double latitude, double longitude,int demand) {
-        this.demand=demand;
-        this.latitude = latitude;
-        this.longitude = longitude;
-    }
-
-    public String getLocationName() {
+	public String getLocationName() {
         return locationName;
     }
 
@@ -50,6 +42,18 @@ public class JsonCustomer {
     public void setDemand(int demand) {
         this.demand = demand;
     }
+
+	public JsonCustomer() {
+	
+	}
+
+	public JsonCustomer(String locationName, double latitude, double longitude, int demand) {
+		super();
+		this.locationName = locationName;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.demand = demand;
+	}
 
 	@Override
 	public String toString() {

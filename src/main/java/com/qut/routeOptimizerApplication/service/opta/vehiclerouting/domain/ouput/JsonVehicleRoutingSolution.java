@@ -57,4 +57,10 @@ public class JsonVehicleRoutingSolution {
         this.distance = distance;
     }
 
+	@Override
+	public String toString() {
+		return "JsonVehicleRoutingSolution [name=" + name + ", customerList=" + customerList + ", vehicleRouteList="
+				+ vehicleRouteList + ", feasible=" + feasible + ", distance=" + distance + "]";
+	}
+
 }

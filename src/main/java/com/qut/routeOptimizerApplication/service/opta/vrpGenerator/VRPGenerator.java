@@ -18,7 +18,6 @@ import org.apache.tomcat.util.http.fileupload.IOUtils;
 
 import com.qut.routeOptimizerApplication.properties.RouteOptimzerProperties;
 import com.qut.routeOptimizerApplication.service.DistanceService;
-import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain.Customer;
 import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain.location.Location;
 import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain.location.RoadLocation;
 
@@ -58,18 +57,15 @@ public class VRPGenerator {
 	@SuppressWarnings("resource")
 	public File generateManualVrp(List<Location> locationList,String locationFileName, int depotListSize, int vehicleListSize,
 			int capacity, GenerationDistanceType distanceType, VrpType vrpType) {
-		VRPGenerator vrpService = new VRPGenerator();
 		int locationListSize=locationList.size();
 		DistanceService dist = new DistanceService();
 		double[][] distanceList = dist.calculateEdgeMatrix(locationList);
-		RouteOptimzerProperties rop=new RouteOptimzerProperties();
 		String name = locationFileName + distanceType.getFileSuffix()
 				+ vrpType.getFileSuffix() + (depotListSize != 1 ? "-d" + depotListSize : "") + "-n" + locationListSize
 				+ "-k" + vehicleListSize;
 		File vrpOutputFile = createVrpOutputFile(name, distanceType, vrpType, depotListSize != 1);
 		BufferedWriter vrpWriter = null;
 		try {
-			System.out.println("capacity"+capacity);
 			vrpWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(vrpOutputFile), "UTF-8"));
 			vrpWriter = writeHeaders(vrpWriter, locationListSize, capacity, distanceType, vrpType, name);
 			writeNodeCoordSection(vrpWriter, locationList);

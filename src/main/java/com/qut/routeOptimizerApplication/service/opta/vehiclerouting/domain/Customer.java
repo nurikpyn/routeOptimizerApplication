@@ -16,16 +16,17 @@
 
 package com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamInclude;
 import org.optaplanner.core.api.domain.entity.PlanningEntity;
 import org.optaplanner.core.api.domain.variable.AnchorShadowVariable;
 import org.optaplanner.core.api.domain.variable.PlanningVariable;
 import org.optaplanner.core.api.domain.variable.PlanningVariableGraphType;
-import org.optaplanner.examples.common.domain.AbstractPersistable;
+
+import com.qut.routeOptimizerApplication.service.opta.common.domain.AbstractPersistable;
 import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain.location.Location;
 import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain.solver.DepotAngleCustomerDifficultyWeightFactory;
 import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain.timewindowed.TimeWindowedCustomer;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamInclude;
 
 @PlanningEntity(difficultyWeightFactoryClass = DepotAngleCustomerDifficultyWeightFactory.class)
 @XStreamAlias("VrpCustomer")

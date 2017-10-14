@@ -25,9 +25,9 @@ import org.optaplanner.core.api.score.buildin.hardsoftlong.HardSoftLongScore;
 import org.optaplanner.core.api.solver.SolverFactory;
 import org.optaplanner.core.impl.score.director.ScoreDirector;
 import org.optaplanner.core.impl.score.director.ScoreDirectorFactory;
-import org.optaplanner.examples.common.app.LoggingMain;
-import org.optaplanner.examples.vehiclerouting.app.VehicleRoutingApp;
 
+import com.qut.routeOptimizerApplication.service.opta.common.app.LoggingMain;
+import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.app.VehicleRoutingApp;
 import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain.Customer;
 import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain.Standstill;
 import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain.Vehicle;
