@@ -24,7 +24,7 @@ var map;
 							var intervalTimer;
 							map = L.map('mapid', {
 								center : [ -25.274398, 133.7751 ],
-								zoom : 15
+								zoom : 4
 							});
 							L
 									.tileLayer(
@@ -57,19 +57,11 @@ var map;
 						vm.loading = true;
 						var url = "http://localhost:8080/getSolved";
 						vm.fileNameObj.fileName = vm.fileList[index];
-						$http.post(url, vm.fileNameObj).success(		
+						//alert(obj.fileName);
+						$http.post(url, vm.fileNameObj).success(
+								
 							function(solution) {
-								map = L.map('mapid', {
-									center : [ -25.274398, 133.7751 ],
-									zoom : 15
-								});
-								L
-										.tileLayer(
-												'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-												{
-													attribution : '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-												}).addTo(map);
-							
+						console.log(solution);
 								 var markers = [];
 								console.log(solution.customerList);
 									angular.forEach(solution.customerList,
