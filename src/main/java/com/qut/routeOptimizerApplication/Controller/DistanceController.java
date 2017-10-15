@@ -98,12 +98,12 @@ public class DistanceController {
 	}
 	
 	@RequestMapping(value = "/getSolved",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody JsonVehicleRoutingSolution  getMappedList(@RequestBody String fileName ) {
+	public @ResponseBody JsonVehicleRoutingSolution  getMappedList(@RequestBody JsonInputFileName fileName ) {
 		 OptimizerOutput vr=new OptimizerOutput();
 		 JsonVehicleRoutingSolution sol=new JsonVehicleRoutingSolution();
 		 RouteOptimzerProperties rot=new RouteOptimzerProperties();
-		 System.out.println("fileJson"+fileName);
-		 File folder = new File(rot.solved+fileName);
+		 System.out.println("fileJson"+fileName.getFileName());
+		 File folder = new File(rot.solved+fileName.getFileName());
 		 sol=vr.readSolutionVRP(folder);
 		 return sol;
 	}
