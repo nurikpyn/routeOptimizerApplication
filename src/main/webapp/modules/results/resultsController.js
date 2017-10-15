@@ -65,8 +65,12 @@ var map;
 						
 								 var markers = [];
 								var k=1;
+								var greenIcon = new LeafIcon({iconUrl: 'leaf-green.png'}),
+							    redIcon = new LeafIcon({iconUrl: 'leaf-red.png'}),
+							    orangeIcon = new LeafIcon({iconUrl: 'leaf-orange.png'});
 									angular.forEach(solution.vehicleRouteList,
 											function(i,vehicle){
+										
 										var depotIcon = L
 										.divIcon({
 											iconSize : new L.Point(
@@ -91,7 +95,7 @@ var map;
 																			20, 20),
 																	className : "vehicleRoutingCustomerMarker",
 																	html : "<span>"
-																			+ index.demand
+																			+ index.id
 																			+ "</span>"
 																});
 														var marker = L.marker([
@@ -110,6 +114,9 @@ var map;
 													});
 												
 											});
+									map.setStyle({
+									    color: 'black'
+									});
 							map.fitBounds(L.featureGroup(markers).getBounds());
 									vm.loading = false;
 									vm.mapData = solution;
