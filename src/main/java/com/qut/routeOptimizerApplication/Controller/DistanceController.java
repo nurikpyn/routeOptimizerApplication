@@ -4,13 +4,17 @@ package com.qut.routeOptimizerApplication.Controller;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.qut.routeOptimizerApplication.properties.RouteOptimzerProperties;
 import com.qut.routeOptimizerApplication.service.OptimizerOutput;
@@ -69,7 +73,7 @@ public class DistanceController {
 	@RequestMapping(value = "/fileSave",method = RequestMethod.POST)
 	public String generateVRPFile( @RequestBody JsonFileInput jsonFileInputBean) throws FileNotFoundException {
       VRPGenerator vrpService=new VRPGenerator();
- 
+      System.out.println("filePath received"+jsonFileInputBean.toString());
       VehicleRoutingImporter imp=new VehicleRoutingImporter();
       File locationFileName=new File(jsonFileInputBean.getLocationFilePath());
       File inputFile=vrpService.generateVrp(locationFileName,jsonFileInputBean.getDepotListSize() ,jsonFileInputBean.getVehicleCount(), jsonFileInputBean.getVehicleCapacity(), GenerationDistanceType.ROAD_DISTANCE_KM, VrpType.BASIC);
@@ -82,8 +86,8 @@ public class DistanceController {
       vehApp.init();
       return "distanceMatrix";
 	}
-	@RequestMapping(value = "/getSolvedFileList",method = RequestMethod.GET)
-	public  List<String> getSolvedList( ) {
+	@RequestMapping(value = "/getSolvedFileList",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody  List<String> getSolvedList( ) {
      List<String> fileNameList=new ArrayList<String>();
      RouteOptimzerProperties rot=new RouteOptimzerProperties();
      File folder = new File(rot.solved);
@@ -91,7 +95,7 @@ public class DistanceController {
          for (int i = 0; i < listOfFiles.length; i++) {
            fileNameList.add(listOfFiles[i].getName());
          }
-      return fileNameList;
+         return fileNameList;
 	}
 	
 	@RequestMapping(value = "/getSolved",method = RequestMethod.GET)

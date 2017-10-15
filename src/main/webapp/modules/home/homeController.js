@@ -20,7 +20,7 @@ angular.module('routeOptimizer')
         };
 
         vm.fileObj = {
-            "locationFile": "",
+            "locationFilePath": "",
             "vehicleCount": 0,
             "vehicleCapacity": 0,
             "depotListSize": 1
@@ -76,13 +76,14 @@ angular.module('routeOptimizer')
         }
 
         function submit() {
-          
+        	 var url ;
             if (vm.selectedTab == 'MANUAL') {
-            	  var url = "localhost:8080/save";
-                //console.log(vm.manualObj);
+            	  url = "http://localhost:8080/save";
+                console.log(vm.manualObj);
                 if (checkDuplicates()) {
                     alert('duplicates found');
                 } else {
+                
                     $http.post(url, vm.manualObj).success(function (response) {
                         $state.go('results');
                     }).error(function (err) {
@@ -93,8 +94,12 @@ angular.module('routeOptimizer')
                 }
 
             } else {
-            	  var url = "localhost:8080/fileSave";
+            	  var url;
+            	  url = "http://localhost:8080/fileSave";
+            		alert(url);
+            		console.log(vm.fileObj);
                 $http.post(url, vm.fileObj).success(function (response) {
+                	
                     $state.go('results');
                 }).error(function (err) {
                     //alert("some error has occured");

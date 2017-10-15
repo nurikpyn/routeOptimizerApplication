@@ -1,6 +1,6 @@
 <VrpVehicleRoutingSolution id="1">
   <id>0</id>
-  <name>australia.csv-road-km-n11-k2</name>
+  <name>australia.csv-road-km-n11-k3</name>
   <distanceType>ROAD_DISTANCE</distanceType>
   <distanceUnitOfMeasurement>km</distanceUnitOfMeasurement>
   <locationList id="2">
@@ -609,8 +609,13 @@
         <vehicle reference="34"/>
       </nextCustomer>
     </VrpVehicle>
+    <VrpVehicle id="40">
+      <id>2</id>
+      <capacity>5</capacity>
+      <depot reference="26"/>
+    </VrpVehicle>
   </vehicleList>
-  <customerList id="40">
+  <customerList id="41">
     <VrpCustomer reference="39"/>
     <VrpCustomer reference="35"/>
     <VrpCustomer reference="37"/>
@@ -622,5 +627,5 @@
     <VrpCustomer reference="29"/>
     <VrpCustomer reference="36"/>
   </customerList>
-  <score id="41">0hard/-47574soft</score>
+  <score id="42">0hard/-47574soft</score>
 </VrpVehicleRoutingSolution>

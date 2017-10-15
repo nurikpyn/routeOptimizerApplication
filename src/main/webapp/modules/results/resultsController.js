@@ -12,19 +12,30 @@ angular.module('routeOptimizer')
 
         function init() {
             fetchList();
+           
             $timeout(function () {
-                var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+            	 var map;
+                 var vehicleRouteLayerGroup;
+                 var intervalTimer;
+               	  var mymap = L.map('mapid',{
+               		    center: [-25.274398, 133.7751],
+               		    zoom: 15
+               		    });
+               	  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+               		    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+               		    }).addTo(mymap);
             });
         }
 
         function fetchList() {
-            /*$http.get('endpoint').success(function (response) {
-
+        	var  url = "http://localhost:8080/getSolvedFileList";
+            $http.get(url).success(function (response) {
+            	vm.fileList=response;
             }).error(function (err) {
 
-            });*/
+            });
 
-            vm.fileList = ['File name 1', 'File name 2'];
+            //vm.fileList = ['File name 1', 'File name 2'];
         }
 
         function selectFile(index) {
