@@ -81,7 +81,7 @@ var map;
 													icon : customerIcon
 												});
 												marker.addTo(map).bindPopup(
-														index.locationName
+														index.latitude+","+index.longitude
 																+ "</br>Deliver "
 																+ index.demand
 																+ " items.");
