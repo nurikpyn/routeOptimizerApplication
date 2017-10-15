@@ -7,7 +7,10 @@ angular.module('routeOptimizer')
 
         vm.selectFile = selectFile;
 
-
+        vm.fileNameObj = {
+                
+                    "fileName": null
+                 };
         init();
 
         function init() {
@@ -41,12 +44,14 @@ angular.module('routeOptimizer')
         function selectFile(index) {
             vm.selectedIndex = index;
             vm.loading = true;
-
-            $http.post('fetchMapData-endpoint', vm.fileList[index]).success(function (response) {
+            var  url = "http://localhost:8080/getSolved";
+            vm.fileNameObj.fileName=vm.fileList[index];
+           //alert(obj.fileName);
+            $http.post(url, vm.fileNameObj).success(function (response) {
                 vm.loading = false;
                 vm.mapData = response;
             }).error(function (err) {
-                //alert(err.message);
+              
                 vm.loading = false;
                 alert('some error occured');
             });

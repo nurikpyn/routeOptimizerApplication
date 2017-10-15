@@ -4,7 +4,6 @@ package com.qut.routeOptimizerApplication.Controller;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.qut.routeOptimizerApplication.properties.RouteOptimzerProperties;
 import com.qut.routeOptimizerApplication.service.OptimizerOutput;
 import com.qut.routeOptimizerApplication.service.opta.common.app.CommonApp;
 import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.app.VehicleRoutingApp;
 import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain.JsonCustomer;
+import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain.JsonInputFileName;
 import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain.input.JsonFileInput;
 import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain.input.JsonManualInput;
 import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain.location.Location;
@@ -98,11 +97,12 @@ public class DistanceController {
          return fileNameList;
 	}
 	
-	@RequestMapping(value = "/getSolved",method = RequestMethod.GET)
-	public JsonVehicleRoutingSolution  getMappedList(String fileName ) {
+	@RequestMapping(value = "/getSolved",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody JsonVehicleRoutingSolution  getMappedList(@RequestBody String fileName ) {
 		 OptimizerOutput vr=new OptimizerOutput();
 		 JsonVehicleRoutingSolution sol=new JsonVehicleRoutingSolution();
 		 RouteOptimzerProperties rot=new RouteOptimzerProperties();
+		 System.out.println("fileJson"+fileName);
 		 File folder = new File(rot.solved+fileName);
 		 sol=vr.readSolutionVRP(folder);
 		 return sol;
