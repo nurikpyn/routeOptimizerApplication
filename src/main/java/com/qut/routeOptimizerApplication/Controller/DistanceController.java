@@ -50,6 +50,7 @@ public class DistanceController {
 	location.setId(id);
 	location.setLatitude(jsonInput.getDepot().getLatitude());
 	location.setLongitude(jsonInput.getDepot().getLongitude());
+	customerList.add(location);
 	id++;
 	for(JsonCustomer cus:jsonInput.getCustomerList()) {
 		location=new RoadLocation();

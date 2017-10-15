@@ -1,0 +1,78 @@
+<VrpVehicleRoutingSolution id="1">
+  <id>0</id>
+  <name>australia-road-km-n3-k1</name>
+  <distanceType>ROAD_DISTANCE</distanceType>
+  <distanceUnitOfMeasurement>km</distanceUnitOfMeasurement>
+  <locationList id="2">
+    <VrpRoadLocation id="3">
+      <id>1</id>
+      <latitude>-27.456195</latitude>
+      <longitude>153.033586</longitude>
+      <travelDistanceMap class="linked-hash-map" id="4">
+        <entry>
+          <VrpRoadLocation id="5">
+            <id>2</id>
+            <latitude>-27.3979</latitude>
+            <longitude>153.058614</longitude>
+            <travelDistanceMap class="linked-hash-map" id="6">
+              <entry>
+                <VrpRoadLocation reference="3"/>
+                <double>14.429</double>
+              </entry>
+              <entry>
+                <VrpRoadLocation id="7">
+                  <id>3</id>
+                  <latitude>-27.444459</latitude>
+                  <longitude>153.043787</longitude>
+                  <travelDistanceMap class="linked-hash-map" id="8">
+                    <entry>
+                      <VrpRoadLocation reference="3"/>
+                      <double>9.018</double>
+                    </entry>
+                    <entry>
+                      <VrpRoadLocation reference="5"/>
+                      <double>6.731</double>
+                    </entry>
+                  </travelDistanceMap>
+                </VrpRoadLocation>
+                <double>6.536</double>
+              </entry>
+            </travelDistanceMap>
+          </VrpRoadLocation>
+          <double>8.402</double>
+        </entry>
+        <entry>
+          <VrpRoadLocation reference="7"/>
+          <double>3.406</double>
+        </entry>
+      </travelDistanceMap>
+    </VrpRoadLocation>
+    <VrpRoadLocation reference="5"/>
+    <VrpRoadLocation reference="7"/>
+  </locationList>
+  <depotList id="9">
+    <VrpDepot id="10">
+      <id>1</id>
+      <location class="VrpRoadLocation" reference="3"/>
+    </VrpDepot>
+  </depotList>
+  <vehicleList id="11">
+    <VrpVehicle id="12">
+      <id>0</id>
+      <capacity>3</capacity>
+      <depot reference="10"/>
+    </VrpVehicle>
+  </vehicleList>
+  <customerList id="13">
+    <VrpCustomer id="14">
+      <id>2</id>
+      <location class="VrpRoadLocation" reference="5"/>
+      <demand>1</demand>
+    </VrpCustomer>
+    <VrpCustomer id="15">
+      <id>3</id>
+      <location class="VrpRoadLocation" reference="7"/>
+      <demand>1</demand>
+    </VrpCustomer>
+  </customerList>
+</VrpVehicleRoutingSolution>
