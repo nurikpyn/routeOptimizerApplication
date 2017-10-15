@@ -212,3 +212,18 @@ i {
     line-height: 80px;
     font-size: 1.5em;
 }
+.vehicleRoutingCustomerMarker {
+    border: solid thin black;
+    border-radius: 10px;
+    background-color: #d3d7cf;
+    color: black;
+    text-align: center;
+    padding: 0;
+}
+
+.vehicleRoutingCustomerMarker span {
+    vertical-align: middle;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
