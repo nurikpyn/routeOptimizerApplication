@@ -26,7 +26,7 @@ public class OptimizerOutput {
 	public JsonVehicleRoutingSolution readSolutionVRP(File outputFile) {
 		vehicleRoutingDao = new VehicleRoutingDao();
 		VehicleRoutingSolution variablesSolution = (VehicleRoutingSolution) vehicleRoutingDao.readSolution(outputFile);
-		System.out.println("solution"+variablesSolution.getScore());
+		System.out.println("solution"+variablesSolution.getVehicleList().toString());
 		return convertToJsonVehicleRoutingSolution(variablesSolution);
 
 	}
@@ -38,7 +38,7 @@ public class OptimizerOutput {
 		for (Customer customer : solution.getCustomerList()) {
 			Location customerLocation = customer.getLocation();
 			jsonCustomerList.add(new JsonCustomer(customerLocation.getName(), customerLocation.getLatitude(),
-					customerLocation.getLongitude(), customer.getDemand()));
+					customerLocation.getLongitude(), customer.getDemand(),customer.getId()));
 		}
 		jsonSolution.setCustomerList(jsonCustomerList);
 		List<JsonVehicleRoute> jsonVehicleRouteList = new ArrayList<>(solution.getVehicleList().size());
@@ -50,6 +50,7 @@ public class OptimizerOutput {
 			jsonVehicleRoute.setDepotLatitude(depotLocation.getLatitude());
 			jsonVehicleRoute.setDepotLongitude(depotLocation.getLongitude());
 			jsonVehicleRoute.setCapacity(vehicle.getCapacity());
+			jsonVehicleRoute.setId(vehicle.getId());
 			Color color = tangoColorFactory.pickColor(vehicle);
 			jsonVehicleRoute
 					.setHexColor(String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue()));
@@ -60,7 +61,7 @@ public class OptimizerOutput {
 				Location customerLocation = customer.getLocation();
 				demandTotal += customer.getDemand();
 				jsonVehicleCustomerList.add(new JsonCustomer(customerLocation.getName(), customerLocation.getLatitude(),
-						customerLocation.getLongitude(), customer.getDemand()));
+						customerLocation.getLongitude(), customer.getDemand(),customer.getId()));
 				customer = customer.getNextCustomer();
 			}
 			jsonVehicleRoute.setDemandTotal(demandTotal);

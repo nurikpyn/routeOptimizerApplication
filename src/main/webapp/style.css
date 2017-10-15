@@ -220,8 +220,21 @@ i {
     text-align: center;
     padding: 0;
 }
-
+.vehicleRoutingDepotMarker {
+    border: solid thin black;
+    border-radius: 10px;
+    background-color: #118eda;
+    color: black;
+    text-align: center;
+    padding: 0;
+}
 .vehicleRoutingCustomerMarker span {
+    vertical-align: middle;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.vehicleRoutingDepotMarker span {
     vertical-align: middle;
     text-align: center;
     margin: 0;

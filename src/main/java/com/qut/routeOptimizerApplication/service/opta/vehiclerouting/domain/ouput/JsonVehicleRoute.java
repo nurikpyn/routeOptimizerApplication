@@ -8,7 +8,7 @@ import com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain.Json
 
 @XmlRootElement
 public class JsonVehicleRoute {
-
+protected long id;
     protected String depotLocationName;
     protected double depotLatitude;
     protected double depotLongitude;
@@ -23,7 +23,15 @@ public class JsonVehicleRoute {
         return depotLocationName;
     }
 
-    public void setDepotLocationName(String depotLocationName) {
+    public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public void setDepotLocationName(String depotLocationName) {
         this.depotLocationName = depotLocationName;
     }
 

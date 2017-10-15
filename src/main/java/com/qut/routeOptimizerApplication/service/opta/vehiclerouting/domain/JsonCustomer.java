@@ -2,7 +2,7 @@ package com.qut.routeOptimizerApplication.service.opta.vehiclerouting.domain;
 
 public class JsonCustomer {
 
-
+protected long id;
 	protected String locationName;
 	
     protected double latitude;
@@ -15,7 +15,15 @@ public class JsonCustomer {
         return locationName;
     }
 
-    public void setLocationName(String locationName) {
+    public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public void setLocationName(String locationName) {
         this.locationName = locationName;
     }
 
@@ -47,12 +55,13 @@ public class JsonCustomer {
 	
 	}
 
-	public JsonCustomer(String locationName, double latitude, double longitude, int demand) {
+	public JsonCustomer(String locationName, double latitude, double longitude, int demand,long id) {
 		super();
 		this.locationName = locationName;
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.demand = demand;
+		this.id=id;
 	}
 
 	@Override

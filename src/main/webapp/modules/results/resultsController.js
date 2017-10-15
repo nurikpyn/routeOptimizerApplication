@@ -62,10 +62,27 @@ var map;
 								
 							function(solution) {
 						console.log(solution);
+						
 								 var markers = [];
 								var k=1;
 									angular.forEach(solution.vehicleRouteList,
 											function(i,vehicle){
+										var depotIcon = L
+										.divIcon({
+											iconSize : new L.Point(
+													20, 20),
+											className : "vehicleRoutingDepotMarker",
+											html : "<span>"
+													+ "D"+
+													+ "</span>"
+										});
+										
+										var d=L.marker([i.depotLatitude,i.depotLongitude],{icon:depotIcon});
+										d.addTo(map).bindPopup(
+												"depot</br>"+
+												i.depotLatitude+","+i.depotLongitude
+														);
+										markers.push(d);
 												angular.forEach(i.customerList,
 													function(index, customer) {
 														var customerIcon = L
@@ -83,13 +100,15 @@ var map;
 															icon : customerIcon
 														});
 														marker.addTo(map).bindPopup(
-																"vehicle"+k+"</br>"+index.latitude+","+index.longitude
+																"vehicle"+(i.id+1)+"</br>"+
+																"customer"+index.id+"</br>"+
+																index.latitude+","+index.longitude
 																		+ "</br>Deliver "
 																		+ index.demand
 																		+ " items.");
 														markers.push(marker);
 													});
-												k++;
+												
 											});
 							map.fitBounds(L.featureGroup(markers).getBounds());
 									vm.loading = false;
