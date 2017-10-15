@@ -63,29 +63,33 @@ var map;
 							function(solution) {
 						console.log(solution);
 								 var markers = [];
-								console.log(solution.customerList);
-									angular.forEach(solution.customerList,
-											function(index, customer) {
-												var customerIcon = L
-														.divIcon({
-															iconSize : new L.Point(
-																	20, 20),
-															className : "vehicleRoutingCustomerMarker",
-															html : "<span>"
-																	+ index.demand
-																	+ "</span>"
+								var k=1;
+									angular.forEach(solution.vehicleRouteList,
+											function(i,vehicle){
+												angular.forEach(i.customerList,
+													function(index, customer) {
+														var customerIcon = L
+																.divIcon({
+																	iconSize : new L.Point(
+																			20, 20),
+																	className : "vehicleRoutingCustomerMarker",
+																	html : "<span>"
+																			+ index.demand
+																			+ "</span>"
+																});
+														var marker = L.marker([
+															index.latitude,
+															index.longitude ], {
+															icon : customerIcon
 														});
-												var marker = L.marker([
-													index.latitude,
-													index.longitude ], {
-													icon : customerIcon
-												});
-												marker.addTo(map).bindPopup(
-														index.latitude+","+index.longitude
-																+ "</br>Deliver "
-																+ index.demand
-																+ " items.");
-												markers.push(marker);
+														marker.addTo(map).bindPopup(
+																"vehicle"+k+"</br>"+index.latitude+","+index.longitude
+																		+ "</br>Deliver "
+																		+ index.demand
+																		+ " items.");
+														markers.push(marker);
+													});
+												k++;
 											});
 							map.fitBounds(L.featureGroup(markers).getBounds());
 									vm.loading = false;
