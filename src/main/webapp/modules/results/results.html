@@ -1,0 +1,12 @@
+<div class="results-wrapper clearfix">
+    <div class="list-wrapper">
+        <ul>
+            <li ng-repeat="file in resultsVm.fileList track by $index" ng-click="resultsVm.selectFile($index)" ng-class="{'active':resultsVm.selectedIndex==$index}">{{file}}</li>
+        </ul>
+    </div>
+    <div class="map-wrapper">
+        <p class="loader" ng-if="resultsVm.loading">Loading...</p>
+   <div id="mapid"></div>
+        
+    </div>
+</div>

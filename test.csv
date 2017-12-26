@@ -1,0 +1,5 @@
+id,source,destination,distance,time
+0,latitude=-27.398992 longitude=153.065599,latitude=-27.398992 longitude=153.065599,0.0,0.0
+1,latitude=-27.398992 longitude=153.065599,latitude=-27.595365 longitude=153.069113,26106.132253838805,1221538.0
+2,latitude=-27.595365 longitude=153.069113,latitude=-27.398992 longitude=153.065599,26039.923253838806,1221286.0
+3,latitude=-27.595365 longitude=153.069113,latitude=-27.595365 longitude=153.069113,0.0,0.0

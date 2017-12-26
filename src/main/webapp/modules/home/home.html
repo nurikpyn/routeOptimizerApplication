@@ -1,0 +1,78 @@
+<div class="home-wrapper">
+    <div class="tabs">
+        <p ng-class="{'active':homeVm.selectedTab=='FILE'}" ng-click="homeVm.switchTab('FILE')">File Upload</p>
+        <p ng-class="{'active':homeVm.selectedTab=='MANUAL'}" ng-click="homeVm.switchTab('MANUAL')">Manual Entry</p>
+    </div>
+
+    <!-- FILE UPLOAD FORM-->
+    <div class="form-wrapper" ng-if="homeVm.selectedTab=='FILE'" ng-form="userInput">
+        <div class="form-group">
+            <p class="label">Location File</p>
+            <!--<input type="file" fileread="homeVm.selectedFile" accept=".csv">-->
+            <input type="text" placeholder="File location" ng-model="homeVm.fileObj.locationFilePath">
+        </div>
+        <div class="form-group-wrapper">
+            <div class="form-group half-width float-left">
+                <p class="label">Number of Vehicle</p>
+                <input type="number" value="0" ng-model="homeVm.fileObj.vehicleCount">
+            </div>
+            <div class="form-group half-width float-right">
+                <p class="label">Vehicle Capacity</p>
+                <input type="number" value="0" ng-model="homeVm.fileObj.vehicleCapacity">
+            </div>
+        </div>
+    </div>
+
+    <!-- MANUAL ENTRY FORM -->
+    <div class="form-wrapper" ng-if="homeVm.selectedTab=='MANUAL'" ng-form="userInput">
+        <div class="form-group customer-details">
+            <div class="customerdetails-title clearfix">
+                <p class="float-left label">Customer Details</p>
+                <p class="float-right zero-line-height pointer" ng-click="homeVm.addUser()">+ Add Customer</p>
+            </div>
+            <div class="lat-long-wrapper">
+                <div class="clearfix" ng-repeat="latLong in homeVm.manualObj.customerList track by $index">
+                    <div class="form-group half-width float-left">
+                        <input type="number" placeholder="Latitude" ng-model="homeVm.manualObj.customerList[$index].latitude">
+                    </div>
+                    <div class="form-group half-width float-right">
+                        <input type="number" placeholder="Longitude" ng-model="homeVm.manualObj.customerList[$index].longitude">
+                    </div>
+                    <i class="fa fa-trash-o pointer" aria-hidden="true" ng-click="homeVm.deleteUser($index)"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group customer-details">
+            <div class="customerdetails-title clearfix">
+                <p class="float-left label">Depot Address</p>
+            </div>
+            <div class="lat-long-wrapper">
+                <div class="flex-container1">
+                    <div class="form-group half-width float-left">
+                        <input type="number" placeholder="Latitude" ng-model="homeVm.manualObj.depot.latitude">
+                    </div>
+                    <div class="form-group half-width float-right">
+                        <input type="number" placeholder="Longitude" ng-model="homeVm.manualObj.depot.longitude" class="half-width float-left">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group-wrapper">
+            <div class="form-group half-width float-left">
+                <p class="label">Number of Vehicle</p>
+                <input type="number" value="0" ng-model="homeVm.manualObj.vehicleCount">
+            </div>
+            <div class="form-group half-width float-right">
+                <p class="label">Vehicle Capacity</p>
+                <input type="number" value="0" ng-model="homeVm.manualObj.vehicleCapacity">
+            </div>
+        </div>
+    </div>
+
+    <div class="button-wrapper">
+        <div class="button secondary" ng-click="homeVm.reset()">Reset</div>
+        <div class="button primary" ng-click="homeVm.submit()">Submit</div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+osmMap/
+gh car/
+*.class
+
+*.war
+
+*.jar
+
+*.original
+/target/

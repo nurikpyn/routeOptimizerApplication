@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plannerBenchmark>
+  <benchmarkDirectory>local/data/vehiclerouting/stepLimit</benchmarkDirectory>
+  <warmUpSecondsSpentLimit>0</warmUpSecondsSpentLimit>
+
+  <inheritedSolverBenchmark>
+    <problemBenchmarks>
+      <solutionFileIOClass>com.qut.routeOptimizerApplication.service.opta.VehicleRoutingFileIO</solutionFileIOClass>
+      <inputSolutionFile>data/vehiclerouting/import/vrpweb/basic/air/A-n32-k5.vrp</inputSolutionFile>
+    </problemBenchmarks>
+
+    <solver>
+      <!--<environmentMode>FAST_ASSERT</environmentMode>-->
+      <solutionClass>com.qut.routeOptimizerApplication.Bean.VehicleRoutingSolution</solutionClass>
+      <entityClass>com.qut.routeOptimizerApplication.Bean.Standstill</entityClass>
+      <entityClass>com.qut.routeOptimizerApplication.Bean.Customer</entityClass>
+     
+      <scoreDirectorFactory>
+        <scoreDrl>routeOptimizerApplication/src/main/resources/vehiclerouting/solver/vehicleRoutingScoreRules.drl</scoreDrl>
+        <initializingScoreTrend>ONLY_DOWN</initializingScoreTrend>
+      </scoreDirectorFactory>
+    </solver>
+  </inheritedSolverBenchmark>
+
+  <solverBenchmark>
+    <solver>
+      <constructionHeuristic>
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+      <localSearch>
+        <termination>
+          <stepCountLimit>100</stepCountLimit>
+        </termination>
+        <unionMoveSelector>
+          <changeMoveSelector/>
+          <swapMoveSelector/>
+          <subChainChangeMoveSelector>
+            <selectReversingMoveToo>false</selectReversingMoveToo>
+          </subChainChangeMoveSelector>
+          <subChainSwapMoveSelector>
+            <selectReversingMoveToo>false</selectReversingMoveToo>
+          </subChainSwapMoveSelector>
+        </unionMoveSelector>
+        <acceptor>
+          <entityTabuSize>9</entityTabuSize>
+        </acceptor>
+        <forager>
+          <acceptedCountLimit>2000</acceptedCountLimit>
+        </forager>
+      </localSearch>
+    </solver>
+  </solverBenchmark>
+</plannerBenchmark>
